@@ -1,0 +1,172 @@
+<div style=" padding-top:1rem;">
+
+  <div *ngIf="news">
+    <h2 class="margin-bottom margin-left">Top Headlines </h2>
+    <div class="card-deck">
+      <app-cards-template [article]="newsReport" class="col-md-3 col-lg-3 col-sm-3 col-xs-3 d-flex align-items-stretch"
+        *ngFor="let newsReport of news.articles | slice:0:8" style="margin-bottom:1rem;">
+      </app-cards-template>
+    </div>
+  </div>
+
+  <div style="padding-top:1rem; margin-bottom:1rem;">
+
+    <!-- Health News -->
+    <div *ngIf="healthNews">
+      <h2 class="margin-bottom margin-left">Health <a routerLink="/health"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-3 col-lg-3 col-sm-3 col-xs-3 d-flex align-items-stretch"
+          *ngFor="let newsReport of healthNews.articles | slice:0:4" style="margin-bottom:1rem;">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Business News -->
+    <div *ngIf="businessNews">
+      <h2 class="margin-bottom margin-left">Business <a routerLink="/business"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-3 col-lg-3 col-sm-3 col-xs-3 d-flex align-items-stretch"
+          *ngFor="let newsReport of businessNews.articles | slice:0:4" style="margin-bottom:1rem;">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Sports News -->
+    <div *ngIf="sportsNews">
+      <h2 class="margin-bottom margin-left">Sports <a routerLink="/sports"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-3 col-lg-3 col-sm-3 col-xs-3 d-flex align-items-stretch"
+          *ngFor="let newsReport of sportsNews.articles | slice:0:4" style="margin-bottom:1rem;">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Technology News -->
+    <div *ngIf="technologyNews">
+      <h2 class="margin-bottom margin-left">Technology <a routerLink="/tech"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-3 col-lg-3 col-sm-3 col-xs-3 d-flex align-items-stretch"
+          *ngFor="let newsReport of technologyNews.articles | slice:0:4" style="margin-bottom:1rem;">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Science News -->
+    <div *ngIf="scienceNews">
+      <h2 class="margin-bottom margin-left">Science <a routerLink="/science"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-3 col-lg-3 col-sm-3 col-xs-3 d-flex align-items-stretch"
+          *ngFor="let newsReport of scienceNews.articles | slice:0:4" style="margin-bottom:1rem;">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Entertainment News -->
+    <div *ngIf="entertainmentNews">
+      <h2 class="margin-bottom margin-left">Entertainment <a routerLink="/entertainment"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-3 col-lg-3 col-sm-3 col-xs-3 d-flex align-items-stretch"
+          *ngFor="let newsReport of entertainmentNews.articles | slice:0:4" style="margin-bottom:1rem;">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <div class="container">
+        <!-- <div class="card-deck"> -->
+            <div class="col-md-4">
+                <div *ngIf="healthNews">
+                  <app-long-kitchen-card [articles]="healthNews.articles" [categoryName]="categoryNames[0]">
+                  </app-long-kitchen-card>
+                </div>
+              </div>
+        <!-- </div> -->
+
+        <!-- <div class="card-deck"> -->
+            <div class="col-md-4">
+                <div *ngIf="businessNews">
+                  <app-long-kitchen-card [articles]="businessNews.articles" [categoryName]="categoryNames[1]">
+                  </app-long-kitchen-card>
+                </div>
+              </div>
+        <!-- </div> -->
+      
+
+        <!-- <div class="card-deck"> -->
+            <div class="col-md-4">
+                <div *ngIf="sportsNews">
+                  <app-long-kitchen-card [articles]="sportsNews.articles" [categoryName]="categoryNames[2]">
+                  </app-long-kitchen-card>
+                </div>
+              </div>
+        <!-- </div> -->
+      
+        <!-- <div class="card-deck"> -->
+            <div class="col-md-4">
+                <div *ngIf="technologyNews">
+                  <app-long-kitchen-card [articles]="technologyNews.articles" [categoryName]="categoryNames[3]">
+                  </app-long-kitchen-card>
+                </div>
+              </div>
+        <!-- </div> -->
+      
+        <!-- <div class="card-deck"> -->
+            <div class="col-md-4">
+                <div *ngIf="scienceNews">
+                  <app-long-kitchen-card [articles]="scienceNews.articles" [categoryName]="categoryNames[5]">
+                  </app-long-kitchen-card>
+                </div>
+              </div>
+        <!-- </div> -->
+      
+        <!-- <div class="card-deck"> -->
+            <div class="col-md-4">
+                <div *ngIf="entertainmentNews">
+                  <app-long-kitchen-card [articles]="entertainmentNews.articles" [categoryName]="categoryNames[4]">
+                  </app-long-kitchen-card>
+                </div>
+              </div>
+        <!-- </div> -->
+        
+
+    </div>
+    
+  </div>
+</div>
+
+
+<!-- New One from now Kitchen Sink -->
+<!-- <div> -->
+  <!-- <div class="column-container"> -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col"> -->
+        
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+
+
+      <!-- <div>
+    <a href="https://twitter.com/intent/tweet?button_hashtag=NEWSNOW&ref_src=twsrc%5Etfw" class="twitter-hashtag-button"
+      data-show-count="true">Tweet #NEWSNOW</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div> -->
+
+    <!-- <div class="notification">
+    <span>There's new news available. Click to reload the news.</span>
+    <button (click)="update$.next()">
+      <div class="flex-row">
+        UPDATE
+      </div>
+    </button>
+  </div> -->
+
+    <!-- Overall Top Headlines News -->
+
+    <!-- Health News style="background-image: linear-gradient(to right,#6094ea,#f02fc2);"-->

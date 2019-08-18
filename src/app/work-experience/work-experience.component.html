@@ -1,0 +1,94 @@
+<!-- <div id="showcase" class="grid">
+    <div class="card bg-dark text-white">
+        <img class="card-img" src="/assets/health.jpg" alt="Card image">
+        <div class="card-img-overlay">
+          <h5 class="card-title">Health is Wealth</h5>
+          <p class="card-text">We categorized our articles in to 3 types. POSITIVE, NEGATIVE and NEUTRAL.</p>
+        </div>
+      </div>
+</div> -->
+
+
+<div class="myContainer">
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+      <div class="card" style="width: 15rem;">
+        <img class="card-img-top" src="assets/Vish.JPG" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Vishwas Gouru</h5>
+          <p class="card-text">Web Developer at Genworth Financial</p>
+          <a href="{{linkedInUrl}}" target="_blank" rel="noreferrer"> LinkedIn </a>
+        </div>
+      </div>
+      <br>
+      <nav class="nav flex-column">
+          <h5>  
+              <a class="nav-link disabled">My Work at:</a>
+          </h5>
+          <a class="nav-link active btn-primary btn-lg" (click)="showGenworth()">Genworth Financial</a>
+          <a class="nav-link btn-primary btn-lg" (click)="hideGenworth()">AT&T</a>
+      </nav>
+    </div>
+    <div class="col-md-9 col-lg-9">
+      <div *ngIf="showgenworth">
+          <h4 class="margin-top">{{genworth.name}}</h4>
+          <h5>{{genworth.location}}</h5>
+          <br>
+          <h5>Role: {{genworth.job_title}}</h5>
+          <hr>
+          <p><b>Project Description:</b></p>
+          {{genworth.project_description}}
+          <br> <br>
+          <p><b>Responsibilities:</b></p>
+          <ul>
+            <li *ngFor="let responsibility of genworth.responsibilities">{{responsibility}}
+            </li>
+          </ul>
+      </div>
+
+      <div *ngIf="!showgenworth">
+          <h4 class="margin-top">{{att.name}}</h4>
+          <h5>{{att.location}}</h5>
+          <br>
+          <h5>Role: {{att.job_title}}</h5>
+          <hr>
+          <p><b>Project Description:</b></p>
+          {{att.project_description}}
+          <br> <br>
+          <p><b>Responsibilities:</b></p>
+          <ul>
+            <li *ngFor="let responsibility of att.responsibilities">{{responsibility}}
+            </li>
+          </ul>
+      </div>
+      
+      
+      <h5 class="margin-top">Technologies Used:</h5>
+      <div class="row">
+        <div class="col-md-2 col-lg-2" *ngFor="let course of courses">
+          <div class="card bg-light card-body mb-3 text-center">
+            {{course}}
+          </div>
+        </div>
+      </div>
+      <!-- <h4 class="margin-top">Hobbies</h4>
+      <div class="row">
+        <div class="col-md-3 col-lg-3 order-1">
+          <div class="card bg-light card-body mb-3 text-center">
+            Read Books
+          </div>
+        </div>
+        <div class="col-md-3 col-lg-3 order-2">
+          <div class="card bg-light card-body mb-3 text-center">
+            Watch Movies
+          </div>
+        </div>
+        <div class="col-md-3 col-lg-3 order-3">
+          <div class="card bg-light card-body mb-3 text-center">
+            Learning new techniques
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

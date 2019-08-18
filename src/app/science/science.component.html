@@ -1,0 +1,46 @@
+<div class="row" style="margin: 0;">
+
+  <div class="container">
+    <div class="card card-body bg-dark margin-one">
+      <h2 class="whiteFont text-center">Science Inventions are displayed here.</h2>
+    </div>
+  </div>
+
+  <div class="col-md-4 d-flex align-items-stretch">
+    <div class="card-body-color"
+      style="padding:0.5rem; margin:0.5rem; background: linear-gradient(to right,#338F9A ,#0F76BB)">
+      <h3>Most Read</h3>
+      <hr>
+      <app-long-kitchen-card [articles]="scienceNews.articles | slice:0:3">
+        </app-long-kitchen-card>
+    </div>
+  </div>
+  <div class="col-md-4 d-flex align-items-stretch">
+    <div class="card-body-color "
+      style="padding:0.5rem; margin:0.5rem; background: linear-gradient(to right,#338F9A ,#0F76BB)">
+      <h3>Least Read</h3>
+      <hr>
+      <app-long-kitchen-card [articles]="scienceNews.articles | slice:3:6">
+        </app-long-kitchen-card>
+    </div>
+  </div>
+  <div class="col-md-4 d-flex align-items-stretch">
+    <div class="card-body-color"
+      style="padding:0.5rem; margin:0.5rem; background: linear-gradient(to right,#338F9A ,#0F76BB)">
+      <h3>Recent</h3>
+      <hr>
+      <app-long-kitchen-card [articles]="scienceNews.articles | slice:7:10">
+        </app-long-kitchen-card>
+    </div>
+  </div>
+</div>
+
+<div style="padding-top: 10px;">
+  <div *ngIf="scienceNews" style="padding-top: 1rem;">
+    <div class="card-deck">
+      <app-cards-template [article]="newsReport" class="col-md-4 col-lg-3 col-sm-6 col-xs-12 d-flex align-items-stretch"
+        *ngFor="let newsReport of scienceNews.articles">
+      </app-cards-template>
+    </div>
+  </div>
+</div>

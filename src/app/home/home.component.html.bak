@@ -1,0 +1,227 @@
+<main id="main">
+
+    <div class="jumbotron text-center" style="text-transform: uppercase;">
+        <h2>
+            Welcome to 20 Articles
+        </h2>
+        <h6>Top 20 articles in each category from various sources</h6>
+        <p>Technology 20 | Health 20 | Science 20 | Entertainment 20 | Sports 20 | Business 20</p>
+    </div>
+
+    <section>
+        <app-news></app-news>
+    </section>
+
+
+    <!-- New One from now Kitchen Sink -->
+    <div>
+        <div class="column-container">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+
+                        <div class="col-md-4">
+
+                        
+                            <div *ngIf="healthNews">
+                                <app-long-kitchen-card [articles]="healthNews.articles"
+                                    [categoryName]="categoryNames[0]">
+                                </app-long-kitchen-card>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div *ngIf="businessNews">
+                                <app-long-kitchen-card [articles]="businessNews.articles"
+                                    [categoryName]="categoryNames[1]">
+                                </app-long-kitchen-card>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div *ngIf="sportsNews">
+                                <app-long-kitchen-card [articles]="sportsNews.articles"
+                                    [categoryName]="categoryNames[2]">
+                                </app-long-kitchen-card>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div *ngIf="technologyNews">
+                                <app-long-kitchen-card [articles]="technologyNews.articles"
+                                    [categoryName]="categoryNames[3]">
+                                </app-long-kitchen-card>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="/assets/newspaper.jpg" alt="">
+                                <div class="card-content">
+                                    <h3 class="card-title">
+                                        Business
+                                    </h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit adipisci repellat
+                                        laboriosam delectus. Quidem odit nesciunt distinctio?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="/assets/newspaper.jpg" alt="">
+                                <div class="card-content">
+                                    <h3 class="card-title">
+                                        Business
+                                    </h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit adipisci repellat
+                                        laboriosam delectus. Quidem odit nesciunt distinctio?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section B-->
+    <section id="section-b" class="grid">
+        <ul>
+            <li>
+                <div class="card">
+                    <img src="/assets/newspaper.jpg" alt="">
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Business
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit adipisci repellat
+                            laboriosam delectus. Quidem odit nesciunt distinctio?</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card">
+                    <img src="/assets/codingPic.jpg" alt="">
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Technology
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit adipisci repellat
+                            consequuntur ipsam vel, laboriosam delectus. Quidem odit nesciunt distinctio?</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card">
+                    <img src="/assets/health.jpg" alt="">
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Health
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit adipisci repellat
+                            consequuntur ipsam vel, laboriosam delectus. Quidem odit nesciunt distinctio?</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Section C -->
+    <section id="section-c" class="grid">
+        <div class="content-wrap">
+            <h2 class="content-title">
+                #NewsPortal
+            </h2>
+            <!-- <p>Place to see as shit happens. Be it good or bad, we serve them to you. Give us a chance to be a part of the mission. People need a good job portal so that they can use it to get their jobs. A Job Portal that gives them options to check the jobs based on their visa status.</p> -->
+            <p>Place to see as shit happens. Be it good or bad, we serve them to you. Give us a chance to be a part of
+                the mission. People need a good news portal so that they can use it.</p>
+        </div>
+    </section>
+
+    <!-- Section D -->
+    <section id="section-d" class="grid">
+        <div class="box">
+            <h2 class="content-title">
+                Business
+            </h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam quos nihil corrupti repudiandae
+                ipsam exercitationem consequuntur distinctio autem unde beatae!</p>
+            <!-- <p>contact@gouru.com</p> -->
+        </div>
+        <div class="box">
+            <h2 class="content-title">
+                Health
+            </h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error quaerat inventore adipisci
+                expedita a quia repellat non facilis provident!</p>
+        </div>
+    </section>
+
+
+    <!-- Section E -->
+    <section id="section-e" class="grid">
+        <div class="box">
+            <h2 class="content-title">
+                Entertainment
+            </h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam quos nihil corrupti repudiandae
+                ipsam exercitationem consequuntur distinctio autem unde beatae!</p>
+            <!-- <p>contact@gouru.com</p> -->
+        </div>
+        <div class="box">
+            <h2 class="content-title">
+                Sports
+            </h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error quaerat inventore adipisci
+                expedita a quia repellat non facilis provident!</p>
+        </div>
+    </section>
+
+
+</main>
+
+<!-- <div class="container" style="margin-top:1rem;">
+    <h2>Lets News</h2>
+    <p>News application that gets the news from NewsAPI. Powered by News API</p>
+    <p>News is divided in to categories and are presented in their respective tabs</p>
+    <p>Some of the top news feeds from each of the categories are displayed on the home page</p>
+    <p>Tab functionality is being used to help the users to navigate from one category of the news to another</p>
+    <hr>
+    <h3>Next Steps:</h3>
+    <p>Present news related to them in a clean and simple manner</p>
+    <p>Top twitter feed for that category is also to be shown</p>
+    <p>Couple of articles from either a renowned source or a highly rated article should be given more space</p>
+    <p>All the remaining articles can just follow a normal grid of showing 3 per row</p>
+    <p>Important news by using some different colors</p>
+    <p>Show some analytics to the website's articles</p>
+    <p>Automate the news articles and decide the most that will be read.</p>
+    <p>Experiment with different grid sizes</p>
+    <p>Accessibility</p>
+    <p>Responsive</p>
+    <p>A show off page about the application and Vishwas</p>
+    <p>Cache the results and show the user from the cache instead of the </p>
+    <p> [IDK] Create separate tabs for each news category</p>
+    <hr>
+    <h4>Nice to have:</h4>
+    <p>Look and feel should be similar to reading a newspaper</p>
+    <p>Notifications if there is any new feed</p>
+
+    <hr>
+    <h4>New IDEA (Data Analytics only for the fortune 500 companies)</h4>
+    <p>Analytics and things common in fortune 500 companies through data analytics.</p>
+    <p>This data can be used for marketing.</p>
+    <p>Example, Over 95% of the fortune 500 companies are using Microsoft Azure. /n This is the selling point for
+        microsoft.</p>
+    <p>Likewise, we can come up with things that most of the companies are using or working on or going towards.</p>
+
+    <hr>
+    <h4>We can differentiate how many number of positive, negative and neutral news articles that are being published everyday</h4>
+    <p>With this we can actually say whether a person is being exposed to positive news or negative news</p>
+</div> -->

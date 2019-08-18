@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 order-1">
+      <h4 class="margin-top">Top Stocks News</h4>
+      <hr>
+      <div *ngIf="stocksList" class="row">
+        <div *ngFor="let stockCompany of stocksList">
+          <div class="truncate">
+            <h5><a href="{{stockCompany.news_url}}" target="_blank" style="color:blue;" rel="noreferrer">{{stockCompany.title}}</a></h5>
+            <div class="row">
+              <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 order-1">
+                <img *ngIf="stockCompany.image_url != null" [src]="stockCompany.image_url" alt="Smiley face">
+                <img *ngIf="stockCompany.image_url === null" src="assets/news.png" alt="Smiley face"><br>
+              </div>
+              <div class="col-md-11 col-lg-11 col-sm-11 col-xs-11 order-1">
+                <span>{{stockCompany.text}}</span>
+              </div>
+              <hr>
+              <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 order-1">
+                <span>By: {{stockCompany.source_name}}</span>
+              </div>
+              <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 order-2">
+                <span>{{stockCompany.sentiment}}</span>
+              </div>
+              <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 order-3">
+                <span class="float-right">On: {{stockCompany.date | date:'mediumDate'}}</span>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 
+  <table *ngIf="stocksList">
+    <tr>
+      <th>Title</th>
+      <th>News URL</th>
+      <th>Image</th>
+      <th>Text</th>
+      <th>Sentiment</th>
+      <th>Source Name</th>
+      <th>Date</th>
+      <th>Type</th>
+    </tr>
+    <tr *ngFor="let stockCompany of stocksList">
+      <td>{{stockCompany.title}}</td>
+      <td>
+        <a href="{{stockCompany.news_url}}" target="_blank">{{stockCompany.news_url}}</a>
+      </td>
+      <td>
+        <img src="{{stockCompany.image_url}}">
+      </td>
+      <td>{{stockCompany.text}}</td>
+      <td>{{stockCompany.sentiment}}</td>
+      <td>{{stockCompany.source_name}}</td>
+      <td>{{stockCompany.date}}</td>
+      <td>{{stockCompany.type}}</td>
+    </tr>
+  </table> -->
+
+</div>

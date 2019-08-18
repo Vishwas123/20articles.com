@@ -1,0 +1,106 @@
+<div style="margin: 0;">
+
+  <div class="row">
+    <div class="col-md-6 d-flex align-items-stretch">
+      <div class="card-body-color linear-gradient">
+        <h3>World News</h3>
+        <hr>
+        <app-long-kitchen-card [articles]="gtNews">
+        </app-long-kitchen-card>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex align-items-stretch">
+      <div class="card-body-color "
+        style="padding:0.5rem; margin:0.5rem; background: linear-gradient(to right,#338F9A ,#0F76BB)">
+        <h3>National News</h3>
+        <hr>
+        <app-long-kitchen-card [articles]="news.articles | slice:0:10">
+          </app-long-kitchen-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top 20 News -->
+  <div *ngIf="news">
+    <h2 class="category-header margin-bottom margin-left">National News </h2>
+    <div class="card-deck">
+      <app-cards-template [article]="newsReport" class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+        *ngFor="let newsReport of news.articles | slice:0:9">
+      </app-cards-template>
+    </div>
+  </div>
+
+  <div style="padding-top:1rem; margin-bottom:1rem;">
+
+    <!-- Health News -->
+    <div *ngIf="healthNews">
+      <h2 class="category-header margin-bottom margin-left">
+        Health
+        <a routerLink="/health"> Show More > </a>
+      </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+          *ngFor="let newsReport of healthNews.articles | slice:0:3">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Business News -->
+    <div *ngIf="businessNews">
+      <h2 class="category-header margin-bottom margin-left">Business <a routerLink="/business"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+          *ngFor="let newsReport of businessNews.articles | slice:0:3">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Sports News -->
+    <div *ngIf="sportsNews">
+      <h2 class="category-header margin-bottom margin-left">Sports <a routerLink="/sports"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+          *ngFor="let newsReport of sportsNews.articles | slice:0:3">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Technology News -->
+    <div *ngIf="technologyNews">
+      <h2 class="category-header margin-bottom margin-left">Technology <a routerLink="/tech"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+          *ngFor="let newsReport of technologyNews.articles | slice:0:3">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Science News -->
+    <div *ngIf="scienceNews">
+      <h2 class="category-header margin-bottom margin-left">Science <a routerLink="/science"> Show More > </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+          *ngFor="let newsReport of scienceNews.articles | slice:0:3">
+        </app-cards-template>
+      </div>
+    </div>
+
+    <!-- Entertainment News -->
+    <div *ngIf="entertainmentNews">
+      <h2 class="category-header margin-bottom margin-left">Entertainment <a routerLink="/entertainment"> Show More >
+        </a> </h2>
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+          *ngFor="let newsReport of entertainmentNews.articles | slice:0:3">
+        </app-cards-template>
+      </div>
+    </div>
+
+  </div>
+</div>
