@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { switchMap, map, shareReplay, retry, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
-import { environment } from '../environments/environment';
-import { News } from '../app/shared/news';
+const environment = require('../environments/environment.ts');
+import { News } from './shared/news';
 
 const apiURL:string = 'https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey='+environment.newsApi;
 const gApiURL: string = 'https://gnews.io/api/v3/topics/world?token=1f7fb4c0c3bd774d67696915a2bfed26';
