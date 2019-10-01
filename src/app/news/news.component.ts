@@ -50,7 +50,7 @@ export class NewsComponent implements OnInit {
 
     this.getEntertainmentNews();
 
-    // this.getGTopWorldNews();
+    this.getGTopWorldNews();
 
   }
 

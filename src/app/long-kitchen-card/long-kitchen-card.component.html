@@ -1,60 +1,8 @@
-<!-- <div class="card card-style">
-    <h4 style="margin:0.5rem;">{{cName}}</h4>
-    <img class="card-img-top" [src]="articles[0].urlToImage" alt="Card image cap" style="max-height:10rem;">
-    <div class="card-body">
-      <h6 class="card-title">
-        <a href="{{articles[0].url}}" target="_blank" style="text-decoration:none;" rel="noreferrer"><span
-            style="color:#333; font-weight: bold;">{{articles[0].title}}</span></a>
-      </h6>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <a href="{{articles[1].url}}" target="_blank" style="text-decoration:none;" rel="noreferrer"><span
-            style="color:#333; font-weight: bold;">{{articles[1].title}}</span></a>
-      </li>
-      <li class="list-group-item">
-        <a href="{{articles[2].url}}" target="_blank" style="text-decoration:none;" rel="noreferrer"><span
-            style="color:#333; font-weight: bold;">{{articles[2].title}}</span></a>
-      </li>
-      <li class="list-group-item">
-        <a href="{{articles[3].url}}" target="_blank" style="text-decoration:none;" rel="noreferrer"><span
-            style="color:#333; font-weight: bold;">{{articles[3].title}}</span></a>
-      </li>
-    </ul>
-    <div class="card-body">
-      <a routerLink="/{{cName | lowercase}}" class="card-link">Show More</a>
-    </div>
-  </div> -->
-
-<!-- <div class="card card-style" style="margin-bottom:2rem;">
-      <a href="{{article.url}}" target="_blank" style="text-decoration:none;" rel="noreferrer">
-        <img *ngIf="article.urlToImage != null" class="card-img-top" [src]="article.urlToImage" alt="Card image cap"
-          style="max-height:10rem;">
-        <img *ngIf="article.urlToImage === null" style="max-height:10rem;" class="card-img-top" src="assets/news.png"
-          alt="Card image cap">
-        <div class="card-body">
-          <h6 style="color:#333; font-weight: bold;"> {{article.title}} </h6>
-          <span style="color:#333;"> {{article.description}}</span>
-        </div>
-      </a>
-    </div> -->
-
-
-<!-- <div class="card" style="margin-bottom:2rem;">
-  <a href="{{article.url}}" target="_blank" style="text-decoration:none;" rel="noreferrer">
-    <div class="card-body">
-      {{article.title}}
-    </div>
-  </a>
-</div> -->
-
-
-
-  <ul style="padding: 0;">
-    <li *ngFor="let newsReport of articles | slice:0:10">
-      <p>
-        <span class="glyphicon glyphicon-chevron-right"></span> <a href="{{newsReport.url}}" target="_blank"
-          style="color:white; cursor: pointer;" rel="noreferrer">{{newsReport.title}}</a>
-      </p>
-    </li>
-  </ul>
+<ul style="padding: 0;">
+  <li *ngFor="let newsReport of articles | slice:0:10">
+    <h5>
+      <span class="glyphicon glyphicon-chevron-right"></span> <a href="{{newsReport.url}}" target="_blank"
+        style="cursor: pointer; padding-top:15px; color: black;" rel="noreferrer">{{newsReport.title}}</a>
+    </h5>
+  </li>
+</ul>
