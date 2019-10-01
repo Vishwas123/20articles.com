@@ -7,8 +7,6 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { NewsComponent } from './news/news.component';
 import { JobsComponent } from './jobs/jobs.component';
-// import { FortuneComponent } from './fortune/fortune.component';
-import { StocksComponent } from './stocks/stocks.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
 import { HealthNewsComponent } from './health-news/health-news.component';
 import { TechnologyComponent } from './technology/technology.component';
@@ -23,8 +21,6 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent },
   {path: 'news', component: NewsComponent },
   {path: 'jobs', component: JobsComponent},
-  // {path:'fortune', component: FortuneComponent},
-  {path:'stocks',component: StocksComponent},
   {path:'developer',component:WorkExperienceComponent},
   {path:'health', component:HealthNewsComponent},
   {path:'tech', component:TechnologyComponent},

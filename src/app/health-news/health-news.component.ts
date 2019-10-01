@@ -15,7 +15,7 @@ export class HealthNewsComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getHealthNews().subscribe(healthNews => {
-      this.healthNews = healthNews;
+      this.healthNews = healthNews.articles;
     });
   }
 

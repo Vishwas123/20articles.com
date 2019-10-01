@@ -14,7 +14,7 @@ export class ScienceComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getScienceNews().subscribe(scienceNews => {
-      this.scienceNews = scienceNews;
+      this.scienceNews = scienceNews.articles;
     });
   }
 

@@ -35,7 +35,7 @@ export class NewsComponent implements OnInit {
     // this.news = merge(initialNews$, update$);
       //Happens when the component gets loaded up
     this.dataService.getNews().subscribe(news => {
-      this.news = news;
+      this.news = news.articles;
     });
 
     this.getHealthNews();
@@ -50,7 +50,7 @@ export class NewsComponent implements OnInit {
 
     this.getEntertainmentNews();
 
-    // this.getGTopWorldNews();
+    this.getGTopWorldNews();
 
   }
 
@@ -62,38 +62,38 @@ export class NewsComponent implements OnInit {
 
   async getHealthNews(){
     await this.dataService.getHealthNews().subscribe(healthNews => {
-      this.healthNews = healthNews;
+      this.healthNews = healthNews.articles;
     });
   }
 
   async getBusinessNews(){
     await this.dataService.getBusinessNews().subscribe(businessNews => {
-      this.businessNews = businessNews;
+      this.businessNews = businessNews.articles;
     });
   }
 
   async getSportsNews(){
     await this.dataService.getSportsNews().subscribe(sportsNews => {
-      this.sportsNews = sportsNews;
+      this.sportsNews = sportsNews.articles;
     });
 
   }
 
   async getTechnologyNews(){
    await this.dataService.getTechnologyNews().subscribe(technologyNews => {
-      this.technologyNews = technologyNews;
+      this.technologyNews = technologyNews.articles;
     });
   }
 
   async getScienceNews(){
     await this.dataService.getScienceNews().subscribe(scienceNews => {
-      this.scienceNews = scienceNews;
+      this.scienceNews = scienceNews.articles;
     });
   }
 
   async getEntertainmentNews(){
     await this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
-      this.entertainmentNews = entertainmentNews;
+      this.entertainmentNews = entertainmentNews.articles;
     });
   }
 

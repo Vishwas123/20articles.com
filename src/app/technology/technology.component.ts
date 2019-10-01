@@ -14,7 +14,7 @@ export class TechnologyComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getTechnologyNews().subscribe(technologyNews => {
-      this.technologyNews = technologyNews;
+      this.technologyNews = technologyNews.articles;
     });
   }
 

@@ -18,7 +18,7 @@ export class BusinessComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getBusinessNews().subscribe(businessNews => {
-      this.businessNews = businessNews;
+      this.businessNews = businessNews.articles;
     });
 
     this.stocksList.map((stock:string) => {

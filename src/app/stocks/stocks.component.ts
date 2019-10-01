@@ -15,7 +15,6 @@ export class StocksComponent implements OnInit {
   constructor(private stocksService:StocksService) { }
 
   ngOnInit() {
-
   }
 
 }
