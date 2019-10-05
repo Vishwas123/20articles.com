@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { switchMap, map, shareReplay, retry, catchError } from 'rxjs/operators';
+import { map, shareReplay, retry, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import { timer } from 'rxjs/observable/timer';
 import { environment } from '../environments/environment';
 import { News } from '../app/shared/news';
 
 const apiURL:string = 'https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey='+environment.newsApi;
 const gApiURL: string = 'https://gnews.io/api/v3/topics/world?token=1f7fb4c0c3bd774d67696915a2bfed26';
 const CACHE_SIZE = 1;
-const REFRESH_INTERVAL = 10000000;
+// const REFRESH_INTERVAL = 10000000;
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +32,7 @@ export class DataService {
   =========================================*/
 
   // Error handling 
-  handleError(error) {
+  handleError(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -51,17 +50,21 @@ export class DataService {
   getNews(){
 
     if(!this.cache$){
-      const timer$ = timer(0, REFRESH_INTERVAL);
-      this.cache$ = timer$.pipe(retry(1),catchError(this.handleError),
-        switchMap(_ => this.requestNews(apiURL)),
-        shareReplay(CACHE_SIZE)
-      );
+
+      if(!this.cache$){
+        this.cache$ = this.http.get<News>(apiURL)
+        .pipe(
+          shareReplay(CACHE_SIZE),
+          retry(1),
+          catchError(this.handleError)
+        )
+      }
+      return this.cache$;
     }
 
-    return this.cache$;
   }
 
-  private requestNews(newsApi){
+  private requestNews(newsApi:any){
     return this.http.get(decodeURIComponent(newsApi))
     .pipe(
       map(response => response)

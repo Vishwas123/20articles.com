@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Observable } from 'rxjs';
-import { take, mergeMap } from 'rxjs/operators';
-import { merge } from 'rxjs/operators/merge';
-import { Subject } from 'rxjs/Subject';
+
 
 @Component({
   selector: 'app-news',
@@ -12,28 +9,19 @@ import { Subject } from 'rxjs/Subject';
 })
 export class NewsComponent implements OnInit {
 
-  news: Observable<Array<any>>;
-  healthNews: Array<any>;
-  businessNews: Array<any>;
-  sportsNews: Array<any>;
-  technologyNews: Array<any>;
-  entertainmentNews: Array<any>;
-  scienceNews: Array<any>;
-  gtNews: Array<any>;
-  update$ = new Subject<void>();
-  categoryNames = ['Health', 'Business', 'Sports', 'Tech', 'Entertainment', 'Science'];
+  news: any;
+  healthNews: any;
+  businessNews: any;
+  sportsNews: any;
+  technologyNews: any;
+  entertainmentNews: any;
+  scienceNews: any;
+  gtNews: any;
+  // categoryNames = ['Health', 'Business', 'Sports', 'Tech', 'Entertainment', 'Science'];
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
 
-    const initialNews$ = this.getNewsOnce();
-
-    const update$ = this.update$.pipe(
-      mergeMap(() => this.getNewsOnce())
-    );
-
-    // this.news = merge(initialNews$, update$);
-      //Happens when the component gets loaded up
     this.dataService.getNews().subscribe(news => {
       this.news = news.articles;
     });
@@ -54,51 +42,47 @@ export class NewsComponent implements OnInit {
 
   }
 
-  async getGTopWorldNews(){
-    await this.dataService.getGTopWorldNews().subscribe(gtNews => {
+  getGTopWorldNews(){
+    this.dataService.getGTopWorldNews().subscribe(gtNews => {
       this.gtNews = gtNews.articles;
     });
   }
 
-  async getHealthNews(){
-    await this.dataService.getHealthNews().subscribe(healthNews => {
+  getHealthNews(){
+    this.dataService.getHealthNews().subscribe(healthNews => {
       this.healthNews = healthNews.articles;
     });
   }
 
-  async getBusinessNews(){
-    await this.dataService.getBusinessNews().subscribe(businessNews => {
+  getBusinessNews(){
+    this.dataService.getBusinessNews().subscribe(businessNews => {
       this.businessNews = businessNews.articles;
     });
   }
 
-  async getSportsNews(){
-    await this.dataService.getSportsNews().subscribe(sportsNews => {
+  getSportsNews(){
+    this.dataService.getSportsNews().subscribe(sportsNews => {
       this.sportsNews = sportsNews.articles;
     });
 
   }
 
-  async getTechnologyNews(){
-   await this.dataService.getTechnologyNews().subscribe(technologyNews => {
+  getTechnologyNews(){
+   this.dataService.getTechnologyNews().subscribe(technologyNews => {
       this.technologyNews = technologyNews.articles;
     });
   }
 
-  async getScienceNews(){
-    await this.dataService.getScienceNews().subscribe(scienceNews => {
+  getScienceNews(){
+    this.dataService.getScienceNews().subscribe(scienceNews => {
       this.scienceNews = scienceNews.articles;
     });
   }
 
-  async getEntertainmentNews(){
-    await this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
+  getEntertainmentNews(){
+    this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
       this.entertainmentNews = entertainmentNews.articles;
     });
-  }
-
-  getNewsOnce(){
-    return this.dataService.getNews().pipe(take(1));
   }
 
 }
