@@ -1,6 +1,6 @@
 <div class="flexClass" style="margin: 0;">
 
-  <div class="well">
+  <!-- <div class="well">
     <div class="row text-center well margin-one">
       <div class="col-md-2 darkgray padding-top">
         <h6>Apple</h6>
@@ -27,40 +27,40 @@
         <p>$246.6</p>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="row">
+  <div class="row-padding row">
     <div class="col-md-4 d-flex align-items-stretch">
-      <div style="padding:0.5rem; margin:0.5rem;">
+        <div class="linear-gradient card-body-color">
         <h3>Most Read</h3>
-        <hr>
         <app-long-kitchen-card [articles]="businessNews | slice:0:3">Loading...
         </app-long-kitchen-card>
       </div>
     </div>
     <div class="col-md-4 d-flex align-items-stretch">
-      <div class="card-body-color " style="padding:0.5rem; margin:0.5rem;">
+        <div class="linear-gradient card-body-color">
         <h3>Least Read</h3>
-        <hr>
         <app-long-kitchen-card [articles]="businessNews | slice:3:6">Loading...
         </app-long-kitchen-card>
       </div>
     </div>
     <div class="col-md-4 d-flex align-items-stretch">
-      <div style="padding:0.5rem; margin:0.5rem;">
+        <div class="linear-gradient card-body-color">
         <h3>Recent</h3>
-        <hr>
         <app-long-kitchen-card [articles]="businessNews | slice:7:10">Loading...
         </app-long-kitchen-card>
       </div>
     </div>
   </div>
 
-  <div *ngIf="businessNews" style="padding-top: 1rem;">
-    <div class="card-deck">
-      <app-cards-template [article]="newsReport" class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-        *ngFor="let newsReport of businessNews">
-      </app-cards-template>
+  <div class="container">
+    <div *ngIf="businessNews" style="padding-top: 1rem;">
+      <div class="card-deck">
+        <app-cards-template [article]="newsReport"
+          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+          *ngFor="let newsReport of businessNews">
+        </app-cards-template>
+      </div>
     </div>
   </div>
 </div>
