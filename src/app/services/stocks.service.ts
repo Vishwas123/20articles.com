@@ -50,12 +50,8 @@ export class StocksService {
   // }
 
   getStockValues(stockName: string): Observable<any> {
-    console.log(`Entered the function for ${stockName}`);
 
     let soCalledApi = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&symbol='+stockName+'&apikey=' + environment.stocksApi;
-
-    console.log(`Entered the function for ${stockName}, ${soCalledApi}`);
-
     // Powered by stocksapi 2019
     // if (this.stocks == undefined) {
       this.stocks = this.http.get(soCalledApi);

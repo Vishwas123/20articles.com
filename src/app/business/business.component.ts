@@ -20,15 +20,5 @@ export class BusinessComponent implements OnInit {
     this.dataService.getBusinessNews().subscribe(businessNews => {
       this.businessNews = businessNews.articles;
     });
-
-    this.stocksList.map((stock:string) => {
-      this.getStockPrices(stock);
-    });
-  }
-
-  async getStockPrices(stockName:string){
-    await this.stocksService.getStockValues(stockName).subscribe(gtNews => {
-      this.results.set(stockName, gtNews);
-    });
   }
 }
