@@ -16,6 +16,9 @@ export class HealthNewsComponent implements OnInit {
   ngOnInit() {
     this.dataService.getHealthNews().subscribe(healthNews => {
       this.healthNews = healthNews.articles;
+      this.healthNews.forEach((article:any) => {
+        article.title = article.title.split('-')[0];
+      });
     });
   }
 

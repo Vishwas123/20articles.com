@@ -18,7 +18,7 @@ const REFRESH_INTERVAL = 10000000;
 export class DataService {
 
   private cache$: Observable<any>;
-  private healthNewsCache$: Observable<any>;
+  private healthNewsCache$: any;
   private businessNewsCache$: Observable<any>;
   private sportsNewsCache$:Observable<any>;
   private entertainmentNewsCache$:Observable<any>;

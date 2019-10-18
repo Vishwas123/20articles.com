@@ -16,14 +16,15 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {  }
 
-
 $remOne: 1rem;
 $remHalf: 0.5rem;
 
 body,
 html {
     height: 100%;
-    background: rgba(0, 0, 0, 0);
+    background: lightgray;
+    // background: #00000000;
+    // background: rgba(0, 0, 0, 0);
     margin: 0 auto;
     font-size: 14px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -112,6 +113,10 @@ html {
     padding-top: $remOne;
 }
 
+.padding-right {
+    padding-top: $remHalf;
+}
+
 .float-right {
     float: right;
 }
@@ -129,6 +134,14 @@ html {
 
 a {
     text-decoration: none;
+}
+
+.page-button {
+    padding: 0.5rem;
+    padding-left:1.2rem;
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
 }
 
 .myContainer {
@@ -171,14 +184,24 @@ h2>a {
     text-decoration: none;
 }
 
-.card-style {
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    box-shadow: 0.2px 0.2px 0.2px 0.2px #888;
+// .card-style {
+//     -moz-border-radius: 0px;
+//     -webkit-border-radius: 0px;
+//     border-radius: 0px;
+//     box-shadow: 0.2px 0.2px 0.2px 0.2px #888;
+//     cursor: pointer;
+//     margin-right: 0;
+//     margin-left:0;
+// }
+
+.card-style > [class*='col-'] {
+    // -moz-border-radius: 0px;
+    // -webkit-border-radius: 0px;
+    // border-radius: 0px;
+    // box-shadow: 0.2px 0.2px 0.2px 0.2px #888;
     cursor: pointer;
-    padding-right: -15px;
-    padding-left:-15px;
+    margin-right: 0;
+    margin-left:0;
 }
 
 .card-body-color {
@@ -201,7 +224,7 @@ h2>a {
 
 .linear-gradient {
     padding:0.5rem; 
-    margin:0.5rem; 
+    margin-bottom:0.5rem; 
     background: linear-gradient(to right,#338F9A ,#0F76BB);
 }
 

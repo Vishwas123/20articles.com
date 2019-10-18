@@ -19,6 +19,9 @@ export class BusinessComponent implements OnInit {
   ngOnInit() {
     this.dataService.getBusinessNews().subscribe(businessNews => {
       this.businessNews = businessNews.articles;
+      this.businessNews.forEach((article:any) => {
+        article.title = article.title.split('-')[0];
+      });
     });
   }
 }
