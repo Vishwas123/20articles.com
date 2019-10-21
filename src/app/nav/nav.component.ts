@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {environment } from '../../environments/environment';
+import { environment } from '../../environments/environment';
+import { CountriesListService } from '../services/countries-list.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,12 +12,19 @@ export class NavComponent implements OnInit {
 
   appTitle: string = environment.appName;
   categoryNames = ['Health', 'Business', 'Tech', 'Science', 'Entertainment', 'Sports'];
+  countries: any;
 
   // Politics, Fortune, About, Jobs, Stocks, Like Button
 
-  constructor() { }
+  constructor(private countriesList:CountriesListService, private dataService: DataService) { }
 
   ngOnInit() {
+    this.countries = this.countriesList.getCountires();
+    console.log("Countries are: "+JSON.stringify(this.countries, null, 2));
+  }
+
+  changeCountry(country:any){
+    this.dataService.updateCountry(country);
   }
 
 }

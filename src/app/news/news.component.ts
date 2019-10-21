@@ -41,6 +41,9 @@ export class NewsComponent implements OnInit {
       //Happens when the component gets loaded up
     this.dataService.getNews().subscribe(news => {
       this.news = news.articles;
+      this.news.forEach((article:any) => {
+        article.title = article.title.split(' - ')[0];
+      });
     });
 
     this.getHealthNews();
@@ -55,16 +58,8 @@ export class NewsComponent implements OnInit {
 
     this.getEntertainmentNews();
 
-    this.getGTopWorldNews();
+    // this.getGTopWorldNews();
 
-    this.getCurrentWeather();
-
-  }
-
-  async getCurrentWeather(){
-    this.weatherService.getWeather().subscribe(gtNews => {
-      this.currentWeather = gtNews;
-    });
   }
 
   async getGTopWorldNews(){
@@ -77,7 +72,7 @@ export class NewsComponent implements OnInit {
     this.dataService.getHealthNews().subscribe(healthNews => {
       this.healthNews = healthNews.articles;
       this.healthNews.forEach((article:any) => {
-        article.title = article.title.split('-')[0];
+        article.title = article.title.split(' - ')[0];
       });
     });
   }

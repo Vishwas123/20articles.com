@@ -22,7 +22,7 @@ $remHalf: 0.5rem;
 body,
 html {
     height: 100%;
-    background: lightgray;
+    background: rgb(247, 244, 244);
     // background: #00000000;
     // background: rgba(0, 0, 0, 0);
     margin: 0 auto;
@@ -130,7 +130,25 @@ html {
     h2 {
         margin-bottom:0px;
     }
+
+    .link-color {
+        float: right; 
+        font-size:10px;
+        color: #FF5722;
+        vertical-align: bottom;
+    }
+
 }
+
+.kitchen-card li {
+    // border-bottom: .1rem solid rgb(133, 13, 13);
+    border-bottom: 0.2px solid black;
+    padding-top: 0.5rem;
+}
+
+.kitchen-card li:last-child {
+    border: none;
+  }
 
 a {
     text-decoration: none;
@@ -220,6 +238,15 @@ h2>a {
 
 .color-gradient {
     background-image: linear-gradient(to right, #6094ea, #f02fc2);
+}
+
+
+.cards-style {
+    padding: 0.4rem;
+    margin-bottom: 0.4rem;
+    // background: #ffffff61;
+    background: #fff;
+    color: #FF5722;
 }
 
 .linear-gradient {

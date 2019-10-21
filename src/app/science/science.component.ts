@@ -16,7 +16,7 @@ export class ScienceComponent implements OnInit {
     this.dataService.getScienceNews().subscribe(scienceNews => {
       this.scienceNews = scienceNews.articles;
       this.scienceNews.forEach((article:any) => {
-        article.title = article.title.split('-')[0];
+        article.title = article.title.split(' - ')[0];
       });
     });
   }

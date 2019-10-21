@@ -1,4 +1,4 @@
-<div style="margin-bottom:2rem;" class="card card-style">
+<div style="margin-bottom:2rem;" class="card card-style" data-toggle="tooltip" data-placement="right" title="{{article.content}}">
   <a href="{{article.url}}" target="_blank" style="text-decoration:none;" rel="noreferrer">
     <img *ngIf="article.urlToImage != null" title="{{article.title}}" class="card-img-top" [src]="article.urlToImage"
       alt="Card image cap" style="max-height: 15rem;">

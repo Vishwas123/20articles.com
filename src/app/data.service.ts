@@ -6,7 +6,7 @@ import { timer } from 'rxjs/observable/timer';
 import { environment } from '../environments/environment';
 import { News } from '../app/shared/news';
 
-const apiURL:string = 'https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey='+environment.newsApi;
+const apiURL:string = 'https://newsapi.org/v2/top-headlines?pageSize=50&apiKey='+environment.newsApi+'&country=';
 const gApiURL: string = 'https://gnews.io/api/v3/topics/world?token=1f7fb4c0c3bd774d67696915a2bfed26';
 const CACHE_SIZE = 1;
 const REFRESH_INTERVAL = 10000000;
@@ -25,6 +25,7 @@ export class DataService {
   private technologyNewsCache$:Observable<any>;
   private scienceNewsCache$:Observable<any>;
   private gtNewsCache$:Observable<any>;
+  private countryId:string = 'us';
 
   constructor(private http:HttpClient) { }
 
@@ -53,7 +54,7 @@ export class DataService {
     if(!this.cache$){
       const timer$ = timer(0, REFRESH_INTERVAL);
       this.cache$ = timer$.pipe(retry(1),catchError(this.handleError),
-        switchMap(_ => this.requestNews(apiURL)),
+        switchMap(_ => this.requestNews(apiURL+this.countryId)),
         shareReplay(CACHE_SIZE)
       );
     }
@@ -84,7 +85,7 @@ export class DataService {
   // HttpClient API get() method => Fetch Health News Articles list
   getHealthNews(){
     if(!this.healthNewsCache$){
-      this.healthNewsCache$ = this.http.get<News>(apiURL + '&category=health')
+      this.healthNewsCache$ = this.http.get<News>(apiURL +this.countryId+ '&category=health')
       .pipe(
         shareReplay(CACHE_SIZE),
         retry(1),
@@ -97,7 +98,7 @@ export class DataService {
   // HttpClient API get() method => Fetch Business News Articles list
   getBusinessNews(){
     if(!this.businessNewsCache$){
-      this.businessNewsCache$ = this.http.get<News>(apiURL + '&category=business')
+      this.businessNewsCache$ = this.http.get<News>(apiURL +this.countryId+ '&category=business')
       .pipe(
         shareReplay(CACHE_SIZE),
         retry(1),
@@ -110,7 +111,7 @@ export class DataService {
   // HttpClient API get() method => Fetch Sports News Articles list
   getSportsNews(){
     if(!this.sportsNewsCache$){
-      this.sportsNewsCache$ = this.http.get<News>(apiURL + '&category=sports')
+      this.sportsNewsCache$ = this.http.get<News>(apiURL +this.countryId+ '&category=sports')
       .pipe(
         shareReplay(CACHE_SIZE),
         retry(1),
@@ -123,7 +124,7 @@ export class DataService {
   // HttpClient API get() method => Fetch Entertainment News Articles list
   getEntertainmentNews(){
     if(!this.entertainmentNewsCache$){
-      this.entertainmentNewsCache$ = this.http.get<News>(apiURL + '&category=entertainment')
+      this.entertainmentNewsCache$ = this.http.get<News>(apiURL +this.countryId+ '&category=entertainment')
       .pipe(
         shareReplay(CACHE_SIZE),
         retry(1),
@@ -136,7 +137,7 @@ export class DataService {
   // HttpClient API get() method => Fetch Technology News Articles list
   getTechnologyNews(){
     if(!this.technologyNewsCache$){
-      this.technologyNewsCache$ = this.http.get<News>(apiURL + '&category=technology')
+      this.technologyNewsCache$ = this.http.get<News>(apiURL +this.countryId+ '&category=technology')
       .pipe(
         shareReplay(CACHE_SIZE),
         retry(1),
@@ -149,7 +150,7 @@ export class DataService {
   // HttpClient API get() method => Fetch Science News Articles list
   getScienceNews(){
     if(!this.scienceNewsCache$){
-      this.scienceNewsCache$ = this.http.get<News>(apiURL + '&category=science')
+      this.scienceNewsCache$ = this.http.get<News>(apiURL +this.countryId+ '&category=science')
       .pipe(
         shareReplay(CACHE_SIZE),
         retry(1),
@@ -157,6 +158,12 @@ export class DataService {
       )
     }
     return this.scienceNewsCache$;
+  }
+
+  updateCountry(country:any){
+    this.countryId = country.id;
+    console.log('Country Changed: '+JSON.stringify(this.countryId));
+    this.healthNewsCache$.unsubscribe
   }
 
 }

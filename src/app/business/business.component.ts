@@ -20,7 +20,7 @@ export class BusinessComponent implements OnInit {
     this.dataService.getBusinessNews().subscribe(businessNews => {
       this.businessNews = businessNews.articles;
       this.businessNews.forEach((article:any) => {
-        article.title = article.title.split('-')[0];
+        article.title = article.title.split(' - ')[0];
       });
     });
   }

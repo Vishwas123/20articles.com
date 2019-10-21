@@ -16,7 +16,7 @@ export class TechnologyComponent implements OnInit {
     this.dataService.getTechnologyNews().subscribe(technologyNews => {
       this.technologyNews = technologyNews.articles;
       this.technologyNews.forEach((article:any) => {
-        article.title = article.title.split('-')[0];
+        article.title = article.title.split(' - ')[0];
       });
     });
   }

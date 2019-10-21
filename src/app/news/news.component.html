@@ -2,20 +2,20 @@
 
   <div class="row">
 
-    <div class="col-md-9" style="margin-top:1rem;" >
-      <div *ngIf="!gtNews">
+    <div class="margin-top col-md-9">
+      <!-- <div *ngIf="!gtNews">
         Loading...
       </div>
-      <div *ngIf="gtNews" class="linear-gradient card-body-color card-deck">
+      <div *ngIf="gtNews">
         <h3>World News</h3>
-        <br>
-        <app-long-kitchen-card [articles]="gtNews">
-        </app-long-kitchen-card>
-      </div>
+        <div class="cards-style card-body-color card-deck">
+          <app-long-kitchen-card [articles]="gtNews">
+          </app-long-kitchen-card>
+        </div>
+      </div> -->
 
-      <!-- Top 20 News -->
       <div *ngIf="news">
-        <h2 class="category-header margin-bottom margin-left">National News </h2>
+        <h2 class="margin-top category-header margin-bottom margin-left">National News </h2>
         <div class="card-group">
           <app-cards-template [article]="newsReport"
             class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
@@ -27,65 +27,63 @@
     </div>
 
     <div class="col-md-3">
-      <div style="background: gray; margin-top:1rem; padding: 1rem;">
-        Temparature at {{currentWeather.name}}:
-        <p>{{currentWeather.main.temp}}</p>
+      <div>
+          <app-weather></app-weather>
       </div>
+      
+      <!-- <div>
+        <app-mlb-game></app-mlb-game>
+      </div> -->
 
-      <div style="margin-top:1rem; margin-bottom: 0.5rem; padding: 1rem; background: lightcoral;">
-        MLB Games:
-        <p>{{currentWeather.main.temp}}</p>
-      </div>
-
-      <div *ngIf="healthNews" class="linear-gradient card-body-color">
-        <h5 class="margin-bottom">
-          Health
-          <a routerLink="/health" style="float: right; color:white; font-size:10px;"> Show More > </a>
+      <div *ngIf="healthNews" class="margin-top cards-style card-body-color">
+        <h5 class="margin-bottom category-header">
+          HEALTH
+          <a routerLink="/health" class="link-color"> Show More > </a>
         </h5>
         <app-long-kitchen-card [articles]="healthNews | slice:0:3">Loading...
         </app-long-kitchen-card>
       </div>
 
-      <div *ngIf="businessNews" class="linear-gradient card-body-color">
-        <h5 class="margin-bottom">
-          Business
-          <a routerLink="/business" style="float: right; color:white; font-size:10px;"> Show More > </a>
+      <div *ngIf="businessNews" class="margin-top cards-style card-body-color">
+        <h5 class="margin-bottom category-header">
+          BUSINESS
+          <a routerLink="/business" class="link-color"> Show More > </a>
         </h5>
         <app-long-kitchen-card [articles]="businessNews | slice:0:3">Loading...
         </app-long-kitchen-card>
       </div>
 
-      <div *ngIf="technologyNews" class="linear-gradient card-body-color">
-        <h5 class="margin-bottom">
-          Technology
-          <a routerLink="/tech" style="float: right; color:white; font-size:10px;"> Show More > </a>
+      <div *ngIf="technologyNews" class="margin-top cards-style card-body-color">
+        <h5 class="margin-bottom category-header">
+          TECHNOLOGY
+          <a routerLink="/tech" class="link-color"> Show More > </a>
         </h5>
         <app-long-kitchen-card [articles]="technologyNews | slice:0:3">Loading...
         </app-long-kitchen-card>
       </div>
 
-      <div *ngIf="scienceNews" class="linear-gradient card-body-color">
-        <h5 class="margin-bottom">
-          Science
-          <a routerLink="/science" style="float: right; color:white; font-size:10px;"> Show More > </a>
+      <div *ngIf="scienceNews" class="margin-top cards-style card-body-color">
+        <h5 class="margin-bottom category-header">
+          SCIENCE
+          <a routerLink="/science" class="link-color"> Show More > </a>
         </h5>
         <app-long-kitchen-card [articles]="scienceNews | slice:0:3">Loading...
         </app-long-kitchen-card>
       </div>
 
-      <div *ngIf="sportsNews" class="linear-gradient card-body-color">
-        <h5 class="margin-bottom">
-          Sports
-          <a routerLink="/sports" style="float: right; color:white; font-size:10px;"> Show More > </a>
+      <div *ngIf="sportsNews" class="margin-top cards-style card-body-color">
+        <h5 class="margin-bottom category-header">
+          SPORTS
+          <a routerLink="/sports" class="link-color"> Show More > </a>
         </h5>
         <app-long-kitchen-card [articles]="sportsNews | slice:0:3">Loading...
         </app-long-kitchen-card>
       </div>
 
-      <div *ngIf="entertainmentNews" class="linear-gradient card-body-color">
-        <h5 class="margin-bottom">
-          Entertainment
-          <a routerLink="/entertainment" style="float: right; color:white; font-size:10px;"> Show More > </a>
+      <div *ngIf="entertainmentNews" class="margin-top cards-style card-body-color">
+        <h5 class="margin-bottom category-header">
+          ENTERTAINMENT
+          <a routerLink="/entertainment" class="link-color"> Show More > </a>
         </h5>
         <app-long-kitchen-card [articles]="entertainmentNews | slice:0:3">Loading...
         </app-long-kitchen-card>
@@ -95,78 +93,4 @@
 
   </div>
 
-  </div>
-
-  <!-- <div class="col-md-9" style="padding-top:1rem; margin-bottom:1rem;"> -->
-
-    <!-- Health News -->
-    <!-- <div *ngIf="healthNews">
-      <h2 class="category-header margin-bottom margin-left">
-        Health
-        <a routerLink="/health"> Show More > </a>
-      </h2>
-      <div class="card-deck">
-        <app-cards-template [article]="newsReport"
-          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-          *ngFor="let newsReport of healthNews | slice:0:3">
-        </app-cards-template>
-      </div>
-    </div> -->
-
-    <!-- Business News -->
-    <!-- <div *ngIf="businessNews">
-      <h2 class="category-header margin-bottom margin-left">Business <a routerLink="/business"> Show More > </a> </h2>
-      <div class="card-deck">
-        <app-cards-template [article]="newsReport"
-          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-          *ngFor="let newsReport of businessNews | slice:0:3">
-        </app-cards-template>
-      </div>
-    </div> -->
-
-    <!-- Sports News -->
-    <!-- <div *ngIf="sportsNews">
-      <h2 class="category-header margin-bottom margin-left">Sports <a routerLink="/sports"> Show More > </a> </h2>
-      <div class="card-deck">
-        <app-cards-template [article]="newsReport"
-          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-          *ngFor="let newsReport of sportsNews | slice:0:3">
-        </app-cards-template>
-      </div>
-    </div> -->
-
-    <!-- Technology News -->
-    <!-- <div *ngIf="technologyNews">
-      <h2 class="category-header margin-bottom margin-left">Technology <a routerLink="/tech"> Show More > </a> </h2>
-      <div class="card-deck">
-        <app-cards-template [article]="newsReport"
-          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-          *ngFor="let newsReport of technologyNews | slice:0:3">
-        </app-cards-template>
-      </div>
-    </div> -->
-
-    <!-- Science News -->
-    <!-- <div *ngIf="scienceNews">
-      <h2 class="category-header margin-bottom margin-left">Science <a routerLink="/science"> Show More > </a> </h2>
-      <div class="card-deck">
-        <app-cards-template [article]="newsReport"
-          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-          *ngFor="let newsReport of scienceNews | slice:0:3">
-        </app-cards-template>
-      </div>
-    </div> -->
-
-    <!-- Entertainment News -->
-    <!-- <div *ngIf="entertainmentNews">
-      <h2 class="category-header margin-bottom margin-left">Entertainment <a routerLink="/entertainment"> Show More >
-        </a> </h2>
-      <div class="card-deck">
-        <app-cards-template [article]="newsReport"
-          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-          *ngFor="let newsReport of entertainmentNews | slice:0:3">
-        </app-cards-template>
-      </div>
-    </div> -->
-
-  <!-- </div> -->
+</div>

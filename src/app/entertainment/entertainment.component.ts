@@ -16,7 +16,7 @@ export class EntertainmentComponent implements OnInit {
     this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
       this.entertainmentNews = entertainmentNews.articles;
       this.entertainmentNews.forEach((article:any) => {
-        article.title = article.title.split('-')[0];
+        article.title = article.title.split(' - ')[0];
       });
     });
   }
