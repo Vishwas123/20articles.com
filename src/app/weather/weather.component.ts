@@ -16,6 +16,9 @@ export class WeatherComponent implements OnInit {
   constructor(private weatherService:WeatherService) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(){
     if(window.navigator.geolocation){
       window.navigator.geolocation.getCurrentPosition(this.getCurrentWeather.bind(this), this.geoFailure.bind(this));
     };

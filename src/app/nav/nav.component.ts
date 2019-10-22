@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
   appTitle: string = environment.appName;
   categoryNames = ['Health', 'Business', 'Tech', 'Science', 'Entertainment', 'Sports'];
   countries: any;
+  currentCountry: any = {name:'United States', id:'us'};
 
   // Politics, Fortune, About, Jobs, Stocks, Like Button
 
@@ -24,6 +25,7 @@ export class NavComponent implements OnInit {
   }
 
   changeCountry(country:any){
+    this.currentCountry = country;
     this.dataService.updateCountry(country);
   }
 

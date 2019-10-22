@@ -16,8 +16,7 @@ export class WeatherService {
   constructor(private http:HttpClient, private dataService:DataService) { }
 
   getWeather(latitude:number, longitude:number) {
-    this.weatherURL = this.weatherURL+'lat='+latitude+'&lon='+longitude;
-    return this.http.get(this.weatherURL).pipe(
+    return this.http.get(this.weatherURL+'lat='+latitude+'&lon='+longitude).pipe(
       shareReplay(CACHE_SIZE),
       retry(1),
       catchError(this.dataService.handleError)

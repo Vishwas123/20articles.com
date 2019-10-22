@@ -10,20 +10,20 @@
           <div class="card-group">
             <app-cards-template [article]="newsReport"
               class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-              *ngFor="let newsReport of healthNews">
+              *ngFor="let newsReport of healthNews | slice:7">
             </app-cards-template>
           </div>
         </div>
       </div>
       <div class="col-md-3">
-        <div *ngIf="healthNews" class="linear-gradient card-body-color margin-top">
-          <h3>Most Read</h3>
+        <div *ngIf="healthNews" class="margin-top cards-style card-body-color">
+          <p class="margin-top category-header margin-bottom">Most Read</p>
           <app-long-kitchen-card [articles]="healthNews | slice:0:3">Loading...
           </app-long-kitchen-card>
         </div>
-        <div *ngIf="healthNews" class="linear-gradient card-body-color">
-          <h3>Recent</h3>
-          <app-long-kitchen-card [articles]="healthNews | slice:7:10">Loading...
+        <div *ngIf="healthNews" class="margin-top cards-style card-body-color">
+          <p class="margin-top category-header margin-bottom">Recent</p>
+          <app-long-kitchen-card [articles]="healthNews | slice:4:7">Loading...
           </app-long-kitchen-card>
         </div>
       </div>

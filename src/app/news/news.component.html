@@ -19,14 +19,14 @@
         <div class="card-group">
           <app-cards-template [article]="newsReport"
             class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-            *ngFor="let newsReport of news | slice:0:18">
+            *ngFor="let newsReport of news | slice:0:21">
           </app-cards-template>
         </div>
       </div>
 
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-3 margin-top">
       <div>
           <app-weather></app-weather>
       </div>
