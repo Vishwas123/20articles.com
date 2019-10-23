@@ -1,44 +1,31 @@
-<div class="flexClass">
-
-  <!-- <div class="container">
-    <div class="card card-body bg-dark margin-one">
-        <h2 class="whiteFont text-center">Technology are displayed here.</h2>
-    </div>
-  </div> -->
-
-  <div class="row-padding row">
-    <div class="col-md-4 d-flex align-items-stretch">
-        <div class="linear-gradient card-body-color">
-        <h3>Most Read</h3>
-        <app-long-kitchen-card [articles]="technologyNews | slice:0:3">
-        </app-long-kitchen-card>
-      </div>
-    </div>
-    <div class="col-md-4 d-flex align-items-stretch">
-        <div class="linear-gradient card-body-color">        
-          <h3>Least Read</h3>
-        <app-long-kitchen-card [articles]="technologyNews | slice:3:6">
-        </app-long-kitchen-card>
-      </div>
-    </div>
-    <div class="col-md-4 d-flex align-items-stretch">
-        <div class="linear-gradient card-body-color">
-        <h3>Recent</h3>
-        <app-long-kitchen-card [articles]="technologyNews | slice:7:10">
-        </app-long-kitchen-card>
-      </div>
-    </div>
-  </div>
-
+<div style="margin: 0;">
   <div class="container">
-    <div *ngIf="technologyNews" style="padding-top: 1rem;">
-      <div class="card-deck">
-        <app-cards-template [article]="newsReport"
-          class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
-          *ngFor="let newsReport of technologyNews">
-        </app-cards-template>
+    <div class="row">
+      <div class="col-md-9" style="margin-top:1rem;">
+        <div *ngIf="!technologyNews">
+          Loading...
+        </div>
+        <div *ngIf="technologyNews" style="padding-top: 1rem;">
+          <div class="card-group">
+            <app-cards-template [article]="newsReport"
+              class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+              *ngFor="let newsReport of technologyNews | slice:7">
+            </app-cards-template>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div *ngIf="technologyNews" class="margin-top cards-style card-body-color">
+          <p class="margin-top category-header margin-bottom">Most Read</p>
+          <app-long-kitchen-card [articles]="technologyNews | slice:0:3">Loading...
+          </app-long-kitchen-card>
+        </div>
+        <div *ngIf="technologyNews" class="margin-top cards-style card-body-color">
+          <p class="margin-top category-header margin-bottom">Recent</p>
+          <app-long-kitchen-card [articles]="technologyNews | slice:4:7">Loading...
+          </app-long-kitchen-card>
+        </div>
       </div>
     </div>
   </div>
-
 </div>

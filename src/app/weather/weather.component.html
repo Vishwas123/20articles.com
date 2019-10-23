@@ -1,0 +1,18 @@
+<div *ngIf="currentWeather" style="background: white; margin-top:1rem; padding: 1rem;">
+  <small class="text-muted margin-top category-header margin-bottom margin-left">{{currentWeather.name}}</small>
+  <div class="text-center margin-top">
+    <h1>{{temp | number:'1.0-2'}} °F</h1>
+    <p>{{currentWeather.weather[0].description | titlecase}}</p>
+  </div>
+  <!-- <div class="col-md-12">
+    <div class="col-md-6">
+        <p style="padding-top:0.5rem;">:</p>
+        SUNRISE
+        <b>{{sunrise}}</b>
+    </div>
+    <div class="col-md-6">
+        <p>SUNSET: </p>
+        <b>{{sunset}}</b>
+    </div>
+  </div> -->
+</div>

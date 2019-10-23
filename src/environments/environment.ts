@@ -7,12 +7,14 @@ export const environment = {
   appName: '20 Articles',
   newsApi: '2fd05daf61a74b1794b5e38ca736d370',
   stocksApi: 'MVQU6LIHBF9XNSRP',
-  gnewsApi: '1f7fb4c0c3bd774d67696915a2bfed26'
+  gnewsApi: '1f7fb4c0c3bd774d67696915a2bfed26',
+  weatherApi: 'dcc0efb17be6595de1d0542673002c86'
 };
 
-// NEWS API 2fd05daf61a74b1794b5e38ca736d370
+// NEWS API 2fd05daf61a74b1794b5e38ca736d370 (300 calls per day)
 // STOCKS API MVQU6LIHBF9XNSRP
-// GNEWS API 1f7fb4c0c3bd774d67696915a2bfed26
+// GNEWS API 1f7fb4c0c3bd774d67696915a2bfed26 (100 calls per day)
+// http://api.openweathermap.org/data/2.5/weather?q=Virginia,USA&APPID=dcc0efb17be6595de1d0542673002c86 (60 calls per second)
 
 /*
  * For easier debugging in development mode, you can import the following file

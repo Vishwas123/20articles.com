@@ -20,8 +20,13 @@ true}">Home</a>
           <a routerLink="/{{category | lowercase}}" class="nav-link" routerLinkActive="active-link">{{category}}</a>
         </li>
       </ul>
-      <span class="navbar-text">
-        Developer Version*
+      <span class="form-inline my-2 my-lg-0 nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" style="color:white; cursor: pointer;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <img src="../../assets/{{currentCountry.id}}.png" width="25px" height="25px" style="margin-right:3px; vertical-align: middle;" alt="INDIA Flag"> {{currentCountry.name}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" (click)="changeCountry(country)" style="cursor: pointer;" *ngFor="let country of countries"><img src="../../assets/{{country.id}}.png" width="25px" height="25px" style="margin-right:3px; vertical-align: middle;" alt="INDIA Flag"> {{country.name}}</a>
+          </div>
       </span>
     </div>
   </nav>

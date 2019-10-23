@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { WeatherService } from '../services/weather.service';
 import { Observable } from 'rxjs';
 import { take, mergeMap } from 'rxjs/operators';
 import { merge } from 'rxjs/operators/merge';
 import { Subject } from 'rxjs/Subject';
+import { RemoveSourceService } from '../services/remove-source.service';
 
 @Component({
   selector: 'app-news',
@@ -20,9 +22,12 @@ export class NewsComponent implements OnInit {
   entertainmentNews: Array<any>;
   scienceNews: Array<any>;
   gtNews: Array<any>;
+  currentWeather: any;
   update$ = new Subject<void>();
   categoryNames = ['Health', 'Business', 'Sports', 'Tech', 'Entertainment', 'Science'];
-  constructor(private dataService:DataService) { }
+
+  constructor(private dataService:DataService, private weatherService:WeatherService
+    ,private removeSource:RemoveSourceService) { }
 
   ngOnInit() {
 
@@ -36,6 +41,9 @@ export class NewsComponent implements OnInit {
       //Happens when the component gets loaded up
     this.dataService.getNews().subscribe(news => {
       this.news = news.articles;
+      this.news.forEach((article:any) => {
+        article.title = article.title.split(' - ')[0];
+      });
     });
 
     this.getHealthNews();
@@ -50,50 +58,68 @@ export class NewsComponent implements OnInit {
 
     this.getEntertainmentNews();
 
-    this.getGTopWorldNews();
+    // this.getGTopWorldNews();
 
   }
 
   async getGTopWorldNews(){
-    await this.dataService.getGTopWorldNews().subscribe(gtNews => {
+    this.dataService.getGTopWorldNews().subscribe(gtNews => {
       this.gtNews = gtNews.articles;
     });
   }
 
   async getHealthNews(){
-    await this.dataService.getHealthNews().subscribe(healthNews => {
+    this.dataService.getHealthNews().subscribe(healthNews => {
       this.healthNews = healthNews.articles;
+      this.healthNews.forEach((article:any) => {
+        article.title = article.title.split(' - ')[0];
+      });
     });
   }
 
   async getBusinessNews(){
-    await this.dataService.getBusinessNews().subscribe(businessNews => {
+    this.dataService.getBusinessNews().subscribe(businessNews => {
       this.businessNews = businessNews.articles;
+      this.businessNews.forEach((article:any) => {
+        article.title = article.title.split('-')[0];
+      });
     });
   }
 
   async getSportsNews(){
-    await this.dataService.getSportsNews().subscribe(sportsNews => {
+    this.dataService.getSportsNews().subscribe(sportsNews => {
       this.sportsNews = sportsNews.articles;
+      this.sportsNews.forEach((article:any) => {
+        article.title = article.title.split('-')[0];
+      });
     });
 
   }
 
   async getTechnologyNews(){
-   await this.dataService.getTechnologyNews().subscribe(technologyNews => {
+   this.dataService.getTechnologyNews().subscribe(technologyNews => {
       this.technologyNews = technologyNews.articles;
+      this.technologyNews.forEach((article:any) => {
+        article.title = article.title.split('-')[0];
+      });
     });
   }
 
   async getScienceNews(){
-    await this.dataService.getScienceNews().subscribe(scienceNews => {
+    this.dataService.getScienceNews().subscribe(scienceNews => {
       this.scienceNews = scienceNews.articles;
+      this.scienceNews.forEach((article:any) => {
+        article.title = article.title.split('-')[0];
+      });
     });
   }
 
   async getEntertainmentNews(){
-    await this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
+    this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
       this.entertainmentNews = entertainmentNews.articles;
+      this.entertainmentNews.forEach((article:any) => {
+        article.title = article.title.split('-')[0];
+      });
     });
   }
 

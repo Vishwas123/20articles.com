@@ -26,6 +26,9 @@ import { SportsComponent } from './sports/sports.component';
 import { CardsTemplateComponent } from './cards-template/cards-template.component';
 import { BusinessComponent } from './business/business.component';
 import { LongKitchenCardComponent } from './long-kitchen-card/long-kitchen-card.component';
+import { WeatherComponent } from './weather/weather.component';
+import { MlbGameComponent } from './mlb-game/mlb-game.component';
+import { CountriesComponent } from './countries/countries.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { LongKitchenCardComponent } from './long-kitchen-card/long-kitchen-card.
     SportsComponent,
     CardsTemplateComponent,
     BusinessComponent,
-    LongKitchenCardComponent
+    LongKitchenCardComponent,
+    WeatherComponent,
+    MlbGameComponent,
+    CountriesComponent
   ],
   imports: [
     BrowserModule,

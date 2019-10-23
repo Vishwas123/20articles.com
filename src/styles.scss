@@ -16,14 +16,15 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {  }
 
-
 $remOne: 1rem;
 $remHalf: 0.5rem;
 
 body,
 html {
     height: 100%;
-    background: rgba(0, 0, 0, 0);
+    background: rgb(247, 244, 244);
+    // background: #00000000;
+    // background: rgba(0, 0, 0, 0);
     margin: 0 auto;
     font-size: 14px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -112,6 +113,10 @@ html {
     padding-top: $remOne;
 }
 
+.padding-right {
+    padding-top: $remHalf;
+}
+
 .float-right {
     float: right;
 }
@@ -125,10 +130,36 @@ html {
     h2 {
         margin-bottom:0px;
     }
+
+    .link-color {
+        float: right; 
+        font-size:10px;
+        color: #FF5722;
+        vertical-align: bottom;
+    }
+
 }
+
+.kitchen-card li {
+    // border-bottom: .1rem solid rgb(133, 13, 13);
+    border-bottom: 0.2px solid black;
+    padding-top: 0.5rem;
+}
+
+.kitchen-card li:last-child {
+    border: none;
+  }
 
 a {
     text-decoration: none;
+}
+
+.page-button {
+    padding: 0.5rem;
+    padding-left:1.2rem;
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
 }
 
 .myContainer {
@@ -171,14 +202,24 @@ h2>a {
     text-decoration: none;
 }
 
-.card-style {
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    box-shadow: 0.2px 0.2px 0.2px 0.2px #888;
+// .card-style {
+//     -moz-border-radius: 0px;
+//     -webkit-border-radius: 0px;
+//     border-radius: 0px;
+//     box-shadow: 0.2px 0.2px 0.2px 0.2px #888;
+//     cursor: pointer;
+//     margin-right: 0;
+//     margin-left:0;
+// }
+
+.card-style > [class*='col-'] {
+    // -moz-border-radius: 0px;
+    // -webkit-border-radius: 0px;
+    // border-radius: 0px;
+    // box-shadow: 0.2px 0.2px 0.2px 0.2px #888;
     cursor: pointer;
-    padding-right: -15px;
-    padding-left:-15px;
+    margin-right: 0;
+    margin-left:0;
 }
 
 .card-body-color {
@@ -199,10 +240,20 @@ h2>a {
     background-image: linear-gradient(to right, #6094ea, #f02fc2);
 }
 
+
+.cards-style {
+    padding: 0.1rem 0.6rem 0.1rem 0.6rem;
+    // margin-bottom: 0.4rem;
+    // background: #ffffff61;
+    background: #fff;
+    color: #FF5722;
+}
+
 .linear-gradient {
     padding:0.5rem; 
-    margin:0.5rem; 
-    background: linear-gradient(to right,#338F9A ,#0F76BB);
+    margin-bottom:0.5rem; 
+    // background: linear-gradient(to right,#338F9A ,#0F76BB);
+    background: #338F9A;
 }
 
 .row-padding{

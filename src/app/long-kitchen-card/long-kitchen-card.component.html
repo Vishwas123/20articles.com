@@ -1,9 +1,9 @@
-<ul style="padding: 0;">
+<ul style="padding: 0; list-style-type: none;" class="kitchen-card">
   <li *ngFor="let newsReport of articles | slice:0:10">
-      <hr/>
     <h5>
-      <span class="glyphicon glyphicon-chevron-right"></span> <a href="{{newsReport.url}}" target="_blank"
-        style="cursor: pointer; color: white;" rel="noreferrer">{{newsReport.title}}</a>
+      <a href="{{newsReport.url}}" target="_blank"
+        style="cursor: pointer; color: black;" rel="noreferrer">{{newsReport.title}}</a>
     </h5>
+    <small class="text-muted">- {{newsReport.source.name}}</small>
   </li>
 </ul>
