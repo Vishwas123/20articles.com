@@ -21,7 +21,6 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.countries = this.countriesList.getCountires();
-    console.log("Countries are: "+JSON.stringify(this.countries, null, 2));
   }
 
   changeCountry(country:any){

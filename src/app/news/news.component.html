@@ -14,6 +14,10 @@
         </div>
       </div> -->
 
+      <div *ngIf="!news">
+        Loading...
+      </div>
+
       <div *ngIf="news">
         <h2 class="margin-top category-header margin-bottom margin-left">National News </h2>
         <div class="card-group">
@@ -28,9 +32,9 @@
 
     <div class="col-md-3 margin-top">
       <div>
-          <app-weather></app-weather>
+        <app-weather></app-weather>
       </div>
-      
+
       <!-- <div>
         <app-mlb-game></app-mlb-game>
       </div> -->

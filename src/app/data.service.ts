@@ -162,7 +162,6 @@ export class DataService {
 
   updateCountry(country: any) {
     this.countryId = country.id;
-    console.log('Country Changed: ' + JSON.stringify(this.countryId));
     this.cache$ = null;
     this.healthNewsCache$ = null;
     this.businessNewsCache$ = null;
@@ -170,6 +169,6 @@ export class DataService {
     this.entertainmentNewsCache$ = null;
     this.technologyNewsCache$ = null;
     this.scienceNewsCache$ = null;
-}
+  }
 
 }
