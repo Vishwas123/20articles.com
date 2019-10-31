@@ -17,7 +17,7 @@ export class HealthNewsComponent implements OnInit {
     this.dataService.getHealthNews().subscribe(healthNews => {
       this.healthNews = healthNews.articles;
       this.healthNews.forEach((article: any) => {
-        let myRegex = / - [A-Za-z]/;
+        let myRegex = /\s-\s[A-Za-z]/;
         article.title = article.title.split(myRegex)[0];
       });
     });

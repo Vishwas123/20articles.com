@@ -20,7 +20,7 @@ export class BusinessComponent implements OnInit {
     this.dataService.getBusinessNews().subscribe(businessNews => {
       this.businessNews = businessNews.articles;
       this.businessNews.forEach((article: any) => {
-        let myRegex = / - [A-Za-z]/;
+        let myRegex = /\s-\s[A-Za-z]/;
         article.title = article.title.split(myRegex)[0];
       });
     });

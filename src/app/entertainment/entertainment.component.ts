@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 // import {  } from '../cards-template/cards-template.component';
+// import sanitzer, 
+
 @Component({
   selector: 'app-entertainment',
   templateUrl: './entertainment.component.html',
@@ -9,21 +12,30 @@ import { DataService } from '../data.service';
 export class EntertainmentComponent implements OnInit {
 
   entertainmentNews: Array<any>;
+  trustedUrl: SafeUrl;
+  videoUrl: SafeResourceUrl;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private sanitizer:DomSanitizer) { }
 
   ngOnInit() {
     this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
       this.entertainmentNews = entertainmentNews.articles;
       this.entertainmentNews.forEach((article: any) => {
-        let myRegex = / - [A-Za-z]/;
+        let myRegex = /\s-\s[A-Za-z]/;
         article.title = article.title.split(myRegex)[0];
         // if(article.source.name == 'Youtube.com'){
-        //   article.youtubeUrl = 'https://www.youtube.com/embed/'+article.url.split('=')[1];
+        //   this.trustedUrl = this.sanitizer.bypassSecurityTrustUrl(article.url);
+        //   this.videoUrl = article.url.split('=')[1];
+        //   article.youtubeUrl = this.setYoutubeUrl(this.videoUrl);
         //   console.log('article.youtubeUrl '+JSON.stringify(article.youtubeUrl, null, 2));
         // }
       });
     });
+  }
+
+  setYoutubeUrl(url : any) {
+    this.videoUrl = 'https://www.youtube.com/embed/'+url;
+    return this.videoUrl;
   }
 
 }
