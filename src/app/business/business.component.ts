@@ -9,18 +9,19 @@ import { StocksService } from '../services/stocks.service';
 })
 export class BusinessComponent implements OnInit {
 
-  businessNews:Array<any>;
-  stocksList: Array<any> = ['MSFT', 'AAPL', 'GOOG', 'AMZN', 'FB'] ;
+  businessNews: Array<any>;
+  stocksList: Array<any> = ['MSFT', 'AAPL', 'GOOG', 'AMZN', 'FB'];
   stocksResults: Array<any>;
   results = new Map();
 
-  constructor(private dataService:DataService, private stocksService:StocksService) { }
+  constructor(private dataService: DataService, private stocksService: StocksService) { }
 
   ngOnInit() {
     this.dataService.getBusinessNews().subscribe(businessNews => {
       this.businessNews = businessNews.articles;
-      this.businessNews.forEach((article:any) => {
-        article.title = article.title.split(' - ')[0];
+      this.businessNews.forEach((article: any) => {
+        let myRegex = / - [A-Za-z]/;
+        article.title = article.title.split(myRegex)[0];
       });
     });
   }

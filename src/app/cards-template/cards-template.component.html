@@ -1,14 +1,29 @@
-<div style="margin-bottom:2rem;" class="card card-style" data-toggle="tooltip" data-placement="right" title="{{article.content}}">
-  <a href="{{article.url}}" target="_blank" style="text-decoration:none;" rel="noreferrer">
-    <img *ngIf="article.urlToImage != null" title="{{article.title}}" class="card-img-top" [src]="article.urlToImage"
-      alt="Card image cap" style="max-height: 15rem;">
-    <img *ngIf="article.urlToImage === null" title="{{article.title}}" style="max-height:10rem;" class="card-img-top"
-      src="assets/news.png" alt="Card image cap">
+<div style="margin-bottom:2rem;" class="card card-style" data-toggle="tooltip" data-placement="right"
+  title="{{article.content}}">
+  <!-- <div *ngIf="article.source.name == 'Youtube.com' else normal">
+    <iframe width="100%" frameborder="0" allowfullscreen="allowfullscreen"
+      src="article.url">
+    </iframe>
     <div class="card-body">
       <h5 style="color:#333; padding-bottom:1rem;"> {{article.title}} </h5>
     </div>
     <div class="footer page-button">
       <small class="text-muted">{{article.source.name}}</small>
     </div>
-  </a>
+  </div> -->
+
+  <!-- <ng-template #normal> -->
+    <a href="{{article.url}}" target="_blank" style="text-decoration:none;" rel="noreferrer">
+      <img *ngIf="article.urlToImage != null" title="{{article.title}}" class="card-img-top"
+        [src]="article.urlToImage" alt="Card image cap" style="max-height: 15rem;">
+      <img *ngIf="article.urlToImage === null || article.urlToImage == ''" title="{{article.title}}" style="max-height:10rem;" class="card-img-top"
+        src="assets/news.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 style="color:#333; padding-bottom:1rem;"> {{article.title}} </h5>
+      </div>
+      <div class="footer page-button">
+        <small class="text-muted">{{article.source.name}}</small>
+      </div>
+    </a>
+  <!-- </ng-template> -->
 </div>

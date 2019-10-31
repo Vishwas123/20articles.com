@@ -15,8 +15,9 @@ export class TechnologyComponent implements OnInit {
   ngOnInit() {
     this.dataService.getTechnologyNews().subscribe(technologyNews => {
       this.technologyNews = technologyNews.articles;
-      this.technologyNews.forEach((article:any) => {
-        article.title = article.title.split(' - ')[0];
+      this.technologyNews.forEach((article: any) => {
+        let myRegex = / - [A-Za-z]/;
+        article.title = article.title.split(myRegex)[0];
       });
     });
   }

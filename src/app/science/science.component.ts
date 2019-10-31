@@ -10,13 +10,14 @@ export class ScienceComponent implements OnInit {
 
   scienceNews: Array<any>;
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.getScienceNews().subscribe(scienceNews => {
       this.scienceNews = scienceNews.articles;
-      this.scienceNews.forEach((article:any) => {
-        article.title = article.title.split(' - ')[0];
+      this.scienceNews.forEach((article: any) => {
+        let myRegex = / - [A-Za-z]/;
+        article.title = article.title.split(myRegex)[0];
       });
     });
   }

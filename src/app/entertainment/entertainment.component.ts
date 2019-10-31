@@ -8,15 +8,20 @@ import { DataService } from '../data.service';
 })
 export class EntertainmentComponent implements OnInit {
 
-  entertainmentNews:Array<any>;
+  entertainmentNews: Array<any>;
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
       this.entertainmentNews = entertainmentNews.articles;
-      this.entertainmentNews.forEach((article:any) => {
-        article.title = article.title.split(' - ')[0];
+      this.entertainmentNews.forEach((article: any) => {
+        let myRegex = / - [A-Za-z]/;
+        article.title = article.title.split(myRegex)[0];
+        // if(article.source.name == 'Youtube.com'){
+        //   article.youtubeUrl = 'https://www.youtube.com/embed/'+article.url.split('=')[1];
+        //   console.log('article.youtubeUrl '+JSON.stringify(article.youtubeUrl, null, 2));
+        // }
       });
     });
   }

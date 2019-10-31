@@ -73,6 +73,9 @@ export class NewsComponent implements OnInit {
       this.healthNews = healthNews.articles;
       this.healthNews.forEach((article:any) => {
         article.title = article.title.split(' - ')[0];
+        if(article.source.name == 'Youtube.com'){
+          article.youtubeUrl = 'https://www.youtube.com/embed/'+article.url.split('=');
+        }
       });
     });
   }
@@ -109,7 +112,8 @@ export class NewsComponent implements OnInit {
     this.dataService.getScienceNews().subscribe(scienceNews => {
       this.scienceNews = scienceNews.articles;
       this.scienceNews.forEach((article:any) => {
-        article.title = article.title.split('-')[0];
+        let myRegex = / - [A-Za-z]/;
+        article.title = article.title.split(myRegex)[0];
       });
     });
   }
@@ -119,6 +123,10 @@ export class NewsComponent implements OnInit {
       this.entertainmentNews = entertainmentNews.articles;
       this.entertainmentNews.forEach((article:any) => {
         article.title = article.title.split('-')[0];
+        if(article.source.name == 'Youtube.com'){
+          article.youtubeUrl = 'https://www.youtube.com/embed/'+article.url.split('=')[1];
+          console.log('article.youtubeUrl '+JSON.stringify(article.youtubeUrl, null, 2));
+        }
       });
     });
   }

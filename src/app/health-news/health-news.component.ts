@@ -9,15 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class HealthNewsComponent implements OnInit {
 
-  healthNews:Array<any>;
+  healthNews: Array<any>;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.getHealthNews().subscribe(healthNews => {
       this.healthNews = healthNews.articles;
-      this.healthNews.forEach((article:any) => {
-        article.title = article.title.split(' - ')[0];
+      this.healthNews.forEach((article: any) => {
+        let myRegex = / - [A-Za-z]/;
+        article.title = article.title.split(myRegex)[0];
       });
     });
   }
