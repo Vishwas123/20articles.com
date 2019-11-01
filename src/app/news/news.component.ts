@@ -6,6 +6,7 @@ import { take, mergeMap } from 'rxjs/operators';
 import { merge } from 'rxjs/operators/merge';
 import { Subject } from 'rxjs/Subject';
 import { RemoveSourceService } from '../services/remove-source.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -26,101 +27,107 @@ export class NewsComponent implements OnInit {
   update$ = new Subject<void>();
   categoryNames = ['Health', 'Business', 'Sports', 'Tech', 'Entertainment', 'Science'];
 
-  constructor(private dataService:DataService, private weatherService:WeatherService
-    ,private removeSource:RemoveSourceService) { }
+  constructor(private dataService: DataService, private weatherService: WeatherService
+    , private removeSource: RemoveSourceService, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
-    const initialNews$ = this.getNewsOnce();
-
-    const update$ = this.update$.pipe(
-      mergeMap(() => this.getNewsOnce())
-    );
-
-    // this.news = merge(initialNews$, update$);
+    this.route.paramMap.subscribe(params => {
+      
+      // this.news = merge(initialNews$, update$);
       //Happens when the component gets loaded up
-    this.dataService.getNews().subscribe(news => {
-      this.news = news.articles;
-      this.news.forEach((article:any) => {
-        article.title = article.title.split(' - ')[0];
+      console.log('Value: '+params.get('countryId'));
+      let countryId = params.get('countryId')? params.get('countryId') : 'us';
+
+      this.dataService.getNews(countryId).subscribe(news => {
+        this.news = news.articles;
+        this.news.forEach((article: any) => {
+          article.title = article.title.split(' - ')[0];
+        });
       });
-    });
 
-    this.getHealthNews();
+      this.getHealthNews(countryId);
 
-    this.getBusinessNews();
+      this.getBusinessNews(countryId);
 
-    this.getSportsNews();
-    
-    this.getTechnologyNews();
+      this.getSportsNews(countryId);
 
-    this.getScienceNews();
+      this.getTechnologyNews(countryId);
 
-    this.getEntertainmentNews();
+      this.getScienceNews(countryId);
+
+      this.getEntertainmentNews(countryId);
+    })
+
+    // const initialNews$ = this.getNewsOnce();
+
+    // const update$ = this.update$.pipe(
+    //   mergeMap(() => this.getNewsOnce())
+    // );
 
     // this.getGTopWorldNews();
 
   }
 
-  async getGTopWorldNews(){
+  async getGTopWorldNews() {
     this.dataService.getGTopWorldNews().subscribe(gtNews => {
       this.gtNews = gtNews.articles;
     });
   }
 
-  async getHealthNews(){
-    this.dataService.getHealthNews().subscribe(healthNews => {
+  async getHealthNews(countryId) {
+    this.dataService.getHealthNews(countryId).subscribe(healthNews => {
       this.healthNews = healthNews.articles;
-      this.healthNews.forEach((article:any) => {
+      this.healthNews.forEach((article: any) => {
         article.title = this.removeLastText(article.title);
-        if(article.source.name == 'Youtube.com'){
-          article.youtubeUrl = 'https://www.youtube.com/embed/'+article.url.split('=');
+        if (article.source.name == 'Youtube.com') {
+          article.youtubeUrl = 'https://www.youtube.com/embed/' + article.url.split('=');
         }
       });
     });
   }
 
-  async getBusinessNews(){
-    this.dataService.getBusinessNews().subscribe(businessNews => {
+  async getBusinessNews(countryId) {
+    this.dataService.getBusinessNews(countryId).subscribe(businessNews => {
       this.businessNews = businessNews.articles;
-      this.businessNews.forEach((article:any) => {
+      this.businessNews.forEach((article: any) => {
         article.title = this.removeLastText(article.title);
       });
     });
   }
 
-  async getSportsNews(){
-    this.dataService.getSportsNews().subscribe(sportsNews => {
+  async getSportsNews(countryId) {
+    this.dataService.getSportsNews(countryId).subscribe(sportsNews => {
       this.sportsNews = sportsNews.articles;
-      this.sportsNews.forEach((article:any) => {
+      this.sportsNews.forEach((article: any) => {
         article.title = this.removeLastText(article.title);
       });
     });
 
   }
 
-  async getTechnologyNews(){
-   this.dataService.getTechnologyNews().subscribe(technologyNews => {
+  async getTechnologyNews(countryId) {
+    this.dataService.getTechnologyNews(countryId).subscribe(technologyNews => {
       this.technologyNews = technologyNews.articles;
-      this.technologyNews.forEach((article:any) => {
+      this.technologyNews.forEach((article: any) => {
         article.title = this.removeLastText(article.title);
       });
     });
   }
 
-  async getScienceNews(){
-    this.dataService.getScienceNews().subscribe(scienceNews => {
+  async getScienceNews(countryId) {
+    this.dataService.getScienceNews(countryId).subscribe(scienceNews => {
       this.scienceNews = scienceNews.articles;
-      this.scienceNews.forEach((article:any) => {
+      this.scienceNews.forEach((article: any) => {
         article.title = this.removeLastText(article.title);
       });
     });
   }
 
-  async getEntertainmentNews(){
-    this.dataService.getEntertainmentNews().subscribe(entertainmentNews => {
+  async getEntertainmentNews(countryId) {
+    this.dataService.getEntertainmentNews(countryId).subscribe(entertainmentNews => {
       this.entertainmentNews = entertainmentNews.articles;
-      this.entertainmentNews.forEach((article:any) => {
+      this.entertainmentNews.forEach((article: any) => {
         article.title = this.removeLastText(article.title);
         // if(article.source.name == 'Youtube.com'){
         //   article.youtubeUrl = this.setYoutubeUrl(article.youtubeUrl);
@@ -131,17 +138,17 @@ export class NewsComponent implements OnInit {
     });
   }
 
-  setYoutubeUrl(url : string) {
-    return 'https://www.youtube.com/embed/'+url.split('=')[1];
+  setYoutubeUrl(url: string) {
+    return 'https://www.youtube.com/embed/' + url.split('=')[1];
   }
 
-  removeLastText(title : string) {
+  removeLastText(title: string) {
     let myRegex = /\s-\s[A-Za-z]/;
     return title.split(myRegex)[0];
   }
 
-  getNewsOnce(){
-    return this.dataService.getNews().pipe(take(1));
-  }
+  // getNewsOnce(){
+  //   return this.dataService.getNews().pipe(take(1));
+  // }
 
 }

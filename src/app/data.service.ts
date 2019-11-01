@@ -49,12 +49,16 @@ export class DataService {
     return throwError(errorMessage);
   }
 
-  getNews() {
+  getNews(id) {
+
+    if(this.countryId != id) {
+      this.updateCountry(id);
+    }
 
     if (!this.cache$) {
       const timer$ = timer(0, REFRESH_INTERVAL);
       this.cache$ = timer$.pipe(retry(1), catchError(this.handleError),
-        switchMap(_ => this.requestNews(apiURL + this.countryId)),
+        switchMap(_ => this.requestNews(apiURL + id)),
         shareReplay(CACHE_SIZE)
       );
     }
@@ -83,9 +87,12 @@ export class DataService {
   }
 
   // HttpClient API get() method => Fetch Health News Articles list
-  getHealthNews() {
+  getHealthNews(id) {
+    if(this.countryId != id) {
+      this.updateCountry(id);
+    }
     if (!this.healthNewsCache$) {
-      this.healthNewsCache$ = this.http.get<News>(apiURL + this.countryId + '&category=health')
+      this.healthNewsCache$ = this.http.get<News>(apiURL + id + '&category=health')
         .pipe(
           shareReplay(CACHE_SIZE),
           retry(1),
@@ -96,9 +103,13 @@ export class DataService {
   }
 
   // HttpClient API get() method => Fetch Business News Articles list
-  getBusinessNews() {
+  getBusinessNews(id) {
+    if(this.countryId != id) {
+      console.log('Updating the country '+id);
+      this.updateCountry(id);
+    }
     if (!this.businessNewsCache$) {
-      this.businessNewsCache$ = this.http.get<News>(apiURL + this.countryId + '&category=business')
+      this.businessNewsCache$ = this.http.get<News>(apiURL + id + '&category=business')
         .pipe(
           shareReplay(CACHE_SIZE),
           retry(1),
@@ -109,9 +120,12 @@ export class DataService {
   }
 
   // HttpClient API get() method => Fetch Sports News Articles list
-  getSportsNews() {
+  getSportsNews(id) {
+    if(this.countryId != id) {
+      this.updateCountry(id);
+    }
     if (!this.sportsNewsCache$) {
-      this.sportsNewsCache$ = this.http.get<News>(apiURL + this.countryId + '&category=sports')
+      this.sportsNewsCache$ = this.http.get<News>(apiURL + id + '&category=sports')
         .pipe(
           shareReplay(CACHE_SIZE),
           retry(1),
@@ -122,9 +136,12 @@ export class DataService {
   }
 
   // HttpClient API get() method => Fetch Entertainment News Articles list
-  getEntertainmentNews() {
+  getEntertainmentNews(id) {
+    if(this.countryId != id) {
+      this.updateCountry(id);
+    }
     if (!this.entertainmentNewsCache$) {
-      this.entertainmentNewsCache$ = this.http.get<News>(apiURL + this.countryId + '&category=entertainment')
+      this.entertainmentNewsCache$ = this.http.get<News>(apiURL + id + '&category=entertainment')
         .pipe(
           shareReplay(CACHE_SIZE),
           retry(1),
@@ -135,9 +152,12 @@ export class DataService {
   }
 
   // HttpClient API get() method => Fetch Technology News Articles list
-  getTechnologyNews() {
+  getTechnologyNews(id) {
+    if(this.countryId != id) {
+      this.updateCountry(id);
+    }
     if (!this.technologyNewsCache$) {
-      this.technologyNewsCache$ = this.http.get<News>(apiURL + this.countryId + '&category=technology')
+      this.technologyNewsCache$ = this.http.get<News>(apiURL + id + '&category=technology')
         .pipe(
           shareReplay(CACHE_SIZE),
           retry(1),
@@ -148,9 +168,12 @@ export class DataService {
   }
 
   // HttpClient API get() method => Fetch Science News Articles list
-  getScienceNews() {
+  getScienceNews(id) {
+    if(this.countryId != id) {
+      this.updateCountry(id);
+    }
     if (!this.scienceNewsCache$) {
-      this.scienceNewsCache$ = this.http.get<News>(apiURL + this.countryId + '&category=science')
+      this.scienceNewsCache$ = this.http.get<News>(apiURL + id + '&category=science')
         .pipe(
           shareReplay(CACHE_SIZE),
           retry(1),
