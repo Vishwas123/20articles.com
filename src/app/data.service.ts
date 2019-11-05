@@ -25,7 +25,7 @@ export class DataService {
   private technologyNewsCache$: Observable<any>;
   private scienceNewsCache$: Observable<any>;
   private gtNewsCache$: Observable<any>;
-  private countryId: string = 'us';
+  private countryId: any = 'us';
 
   constructor(private http: HttpClient) { }
 
@@ -90,6 +90,8 @@ export class DataService {
   getHealthNews(id) {
     if(this.countryId != id) {
       this.updateCountry(id);
+      
+      // this.updateNavCountry()
     }
     if (!this.healthNewsCache$) {
       this.healthNewsCache$ = this.http.get<News>(apiURL + id + '&category=health')
@@ -194,4 +196,10 @@ export class DataService {
     this.scienceNewsCache$ = null;
   }
 
+  // updateNavCountry(country:any) {
+
+  // }
+  getCurrentCountry() {
+    return this.countryId;
+  };
 }

@@ -19,8 +19,6 @@ export class BusinessComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      console.log('Param Vlue: '+params.get('countryId'));
-      console.log('Paresd : '+JSON.stringify(params, null, 2));
       this.dataService.getBusinessNews(params.get('countryId')).subscribe(businessNews => {
         this.businessNews = businessNews.articles;
         this.businessNews.forEach((article: any) => {

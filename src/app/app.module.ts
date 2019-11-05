@@ -29,6 +29,7 @@ import { LongKitchenCardComponent } from './long-kitchen-card/long-kitchen-card.
 import { WeatherComponent } from './weather/weather.component';
 import { MlbGameComponent } from './mlb-game/mlb-game.component';
 import { CountriesComponent } from './countries/countries.component';
+import { YoutubePipe } from './pipes/youtube.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CountriesComponent } from './countries/countries.component';
     LongKitchenCardComponent,
     WeatherComponent,
     MlbGameComponent,
-    CountriesComponent
+    CountriesComponent,
+    YoutubePipe
   ],
   imports: [
     BrowserModule,
