@@ -25,10 +25,10 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.countries = this.countriesList.getCountires();
-    this.dataService.getCurrentCountry().subscribe(healthNews => {
-      this.currentCountryId = healthNews;
-      console.log("Nav Country ***********: " +this.currentCountryId);
-    });
+    // this.dataService.getCurrentCountry().subscribe(healthNews => {
+    //   this.currentCountryId = healthNews;
+    //   console.log("Nav Country ***********: " +this.currentCountryId);
+    // });
     // this.currentCountryId = this.dataService.getCurrentCountry().subsribe();
     
   }

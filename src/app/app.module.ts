@@ -30,6 +30,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { MlbGameComponent } from './mlb-game/mlb-game.component';
 import { CountriesComponent } from './countries/countries.component';
 import { YoutubePipe } from './pipes/youtube.pipe';
+import { PoliticsComponent } from './politics/politics.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { YoutubePipe } from './pipes/youtube.pipe';
     WeatherComponent,
     MlbGameComponent,
     CountriesComponent,
-    YoutubePipe
+    YoutubePipe,
+    PoliticsComponent
   ],
   imports: [
     BrowserModule,

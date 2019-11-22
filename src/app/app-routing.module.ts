@@ -14,6 +14,7 @@ import { ScienceComponent } from './science/science.component';
 import { EntertainmentComponent } from './entertainment/entertainment.component';
 import { SportsComponent } from './sports/sports.component';
 import { BusinessComponent } from './business/business.component';
+import { PoliticsComponent } from './politics/politics.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'health/:countryId', component:HealthNewsComponent},
   {path:'tech/:countryId', component:TechnologyComponent},
   {path:'science/:countryId', component:ScienceComponent},
+  {path:'politics/:countryId', component:PoliticsComponent},
   {path:'entertainment/:countryId', component:EntertainmentComponent},
   {path:'sports/:countryId', component:SportsComponent},
   {path: 'business/:countryId', component: BusinessComponent},

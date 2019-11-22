@@ -8,6 +8,7 @@ import { News } from '../app/shared/news';
 
 const apiURL: string = 'https://newsapi.org/v2/top-headlines?pageSize=50&apiKey=' + environment.newsApi + '&country=';
 const gApiURL: string = 'https://gnews.io/api/v3/topics/world?token=1f7fb4c0c3bd774d67696915a2bfed26';
+const searchURL: string = 'https://newsapi.org/v2/everything?pageSize=50&apiKey='+ environment.newsApi;
 const CACHE_SIZE = 1;
 const REFRESH_INTERVAL = 10000000;
 
@@ -24,6 +25,7 @@ export class DataService {
   private entertainmentNewsCache$: Observable<any>;
   private technologyNewsCache$: Observable<any>;
   private scienceNewsCache$: Observable<any>;
+  private politicsNewsCache$: Observable<any>;
   private gtNewsCache$: Observable<any>;
   private countryId: any = 'us';
 
@@ -121,6 +123,23 @@ export class DataService {
     return this.businessNewsCache$;
   }
 
+  // HttpClient API get() method => Fetch Business News Articles list
+  getPoliticsNews(id) {
+    if(this.countryId != id) {
+      console.log('Updating the country '+id);
+      this.updateCountry(id);
+    }
+    if (!this.politicsNewsCache$) {
+      this.politicsNewsCache$ = this.http.get<News>(searchURL + '&q=politics')
+        .pipe(
+          shareReplay(CACHE_SIZE),
+          retry(1),
+          catchError(this.handleError)
+        )
+    }
+    return this.politicsNewsCache$;
+  }
+
   // HttpClient API get() method => Fetch Sports News Articles list
   getSportsNews(id) {
     if(this.countryId != id) {
@@ -194,6 +213,7 @@ export class DataService {
     this.entertainmentNewsCache$ = null;
     this.technologyNewsCache$ = null;
     this.scienceNewsCache$ = null;
+    this.politicsNewsCache$ = null;
   }
 
   // updateNavCountry(country:any) {
