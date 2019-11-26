@@ -5,16 +5,16 @@
 // No media query since this is the default in Bootstrap
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {  }
+@media (min-width: 576px) {}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {  }
+@media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {  }
+@media (min-width: 992px) {}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) {}
 
 $remOne: 1rem;
 $remHalf: 0.5rem;
@@ -47,7 +47,7 @@ html {
 }
 
 .padding-halfrem {
-    padding:0.5rem;
+    padding: 0.5rem;
 }
 
 .active-link {
@@ -125,15 +125,15 @@ html {
     border-bottom: 2px solid;
     padding-bottom: 5px;
     margin-bottom: 10px;
-    margin-top:10px;
+    margin-top: 10px;
 
     h2 {
-        margin-bottom:0px;
+        margin-bottom: 0px;
     }
 
     .link-color {
-        float: right; 
-        font-size:10px;
+        float: right;
+        font-size: 10px;
         color: #FF5722;
         vertical-align: bottom;
     }
@@ -148,7 +148,7 @@ html {
 
 .kitchen-card li:last-child {
     border: none;
-  }
+}
 
 a {
     text-decoration: none;
@@ -156,9 +156,9 @@ a {
 
 .page-button {
     padding: 0.5rem;
-    padding-left:1.2rem;
-    position: absolute; 
-    bottom: 0; 
+    padding-left: 1.2rem;
+    position: absolute;
+    bottom: 0;
     left: 0;
 }
 
@@ -176,7 +176,7 @@ sup {
 }
 
 .footer {
-    display:inline-block; 
+    display: inline-block;
     text-decoration: none;
 }
 
@@ -212,14 +212,14 @@ h2>a {
 //     margin-left:0;
 // }
 
-.card-style > [class*='col-'] {
+.card-style>[class*='col-'] {
     // -moz-border-radius: 0px;
     // -webkit-border-radius: 0px;
     // border-radius: 0px;
     // box-shadow: 0.2px 0.2px 0.2px 0.2px #888;
     cursor: pointer;
     margin-right: 0;
-    margin-left:0;
+    margin-left: 0;
 }
 
 .card-body-color {
@@ -249,13 +249,38 @@ h2>a {
     color: #FF5722;
 }
 
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
 .linear-gradient {
-    padding:0.5rem; 
-    margin-bottom:0.5rem; 
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
     // background: linear-gradient(to right,#338F9A ,#0F76BB);
     background: #338F9A;
 }
 
-.row-padding{
-    padding:10px 10px 10px 10px;
+.row-padding {
+    padding: 10px 10px 10px 10px;
 }

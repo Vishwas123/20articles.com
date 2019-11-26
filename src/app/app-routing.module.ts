@@ -14,20 +14,22 @@ import { ScienceComponent } from './science/science.component';
 import { EntertainmentComponent } from './entertainment/entertainment.component';
 import { SportsComponent } from './sports/sports.component';
 import { BusinessComponent } from './business/business.component';
+import { PoliticsComponent } from './politics/politics.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'about', component: AboutComponent },
   {path: 'contact', component: ContactComponent },
-  {path: 'news', component: NewsComponent },
+  {path: 'news/:countryId', component: NewsComponent },
   {path: 'jobs', component: JobsComponent},
-  {path:'developer',component:WorkExperienceComponent},
-  {path:'health', component:HealthNewsComponent},
-  {path:'tech', component:TechnologyComponent},
-  {path:'science', component:ScienceComponent},
-  {path:'entertainment', component:EntertainmentComponent},
-  {path:'sports', component:SportsComponent},
-  {path: 'business', component: BusinessComponent},
+  {path:'developer', component:WorkExperienceComponent},
+  {path:'health/:countryId', component:HealthNewsComponent},
+  {path:'tech/:countryId', component:TechnologyComponent},
+  {path:'science/:countryId', component:ScienceComponent},
+  {path:'politics/:countryId', component:PoliticsComponent},
+  {path:'entertainment/:countryId', component:EntertainmentComponent},
+  {path:'sports/:countryId', component:SportsComponent},
+  {path: 'business/:countryId', component: BusinessComponent},
   {path: '**', component: HomeComponent} 
 ];
 
