@@ -41,11 +41,11 @@ export class NavComponent implements OnInit {
     this.router.navigate([url, country.id]).then( (e) => {
       if (e) {
         console.log("Navigation is successful!");
+        this.dataService.updateCountry(country);
       } else {
         console.log("Navigation has failed!");
       }
     });
-    this.dataService.updateCountry(country);
   }
 
 }

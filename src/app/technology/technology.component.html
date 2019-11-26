@@ -13,6 +13,38 @@
             </app-cards-template>
           </div>
         </div>
+
+        <div *ngIf="techVideos" style="padding-top: 1rem;">
+          <h2 class="margin-top category-header margin-bottom margin-left">Videos </h2>
+          <div class="card-group">
+            <app-cards-template [article]="newsReport"
+              class="col-md-4 col-lg-4 col-sm-6 col-xs-12 d-flex align-items-stretch"
+              *ngFor="let newsReport of techVideos">
+            </app-cards-template>
+          </div>
+        </div>
+
+        <div *ngIf="techWithNoImage" style="padding-top: 1rem;">
+          <h2 class="margin-top category-header margin-bottom margin-left">Other Articles</h2>
+          <div class="card-group">
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 d-flex align-items-stretch"
+              *ngFor="let article of techWithNoImage | slice:7">
+              <div style="margin-bottom:2rem;" class="card card-style" data-toggle="tooltip" data-placement="right"
+                title="{{article.content}}">
+                <a href="{{article.url}}" target="_blank" style="text-decoration:none;" rel="noreferrer">
+                  <div class="card-body">
+                    <h5 style="color:#333; padding-bottom:1rem;"> {{article.title}} </h5>
+                  </div>
+                  <div class="footer page-button">
+                    <small class="text-muted">{{article.source.name}}</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
       <div class="col-md-3">
         <div *ngIf="technologyNews" class="margin-top cards-style card-body-color">
@@ -22,7 +54,7 @@
         </div>
         <div *ngIf="technologyNews" class="margin-top cards-style card-body-color">
           <p class="margin-top category-header margin-bottom">Recent</p>
-          <app-long-kitchen-card [articles]="technologyNews | slice:4:7">Loading...
+          <app-long-kitchen-card [articles]="technologyNews | slice:3:6">Loading...
           </app-long-kitchen-card>
         </div>
       </div>

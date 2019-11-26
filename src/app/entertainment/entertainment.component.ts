@@ -9,7 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EntertainmentComponent implements OnInit {
 
-  entertainmentNews: Array<any>;
+  entertainmentNews: Array<any> = [];
+  entertainmentVideos: Array<any> = [];
+  entertianmentWithNoImages: Array<any> = [];
+  map = new Map();
   videoUrl: any;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
@@ -17,10 +20,20 @@ export class EntertainmentComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.dataService.getEntertainmentNews(params.get('countryId')).subscribe(entertainmentNews => {
-        this.entertainmentNews = entertainmentNews.articles;
-        this.entertainmentNews.forEach((article: any) => {
+        entertainmentNews.articles.forEach((article: any) => {
           let myRegex = /\s-\s[A-Za-z]/;
           article.title = article.title.split(myRegex)[0];
+          if (!this.map.has(article.title)) {
+            this.map.set(article.title, true);
+            if (article.source.name == 'Youtube.com') {
+              this.entertainmentVideos.push(article);
+            } else if (article.urlToImage === null || article.urlToImage == '') {
+              this.entertianmentWithNoImages.push(article);
+            }
+            else {
+              this.entertainmentNews.push(article);
+            }
+          }
         });
       });
     })

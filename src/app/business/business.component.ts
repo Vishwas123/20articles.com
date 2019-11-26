@@ -10,20 +10,32 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BusinessComponent implements OnInit {
 
-  businessNews: Array<any>;
+  businessNews: Array<any> = [];
+  businessVideos: Array<any> = [];
+  businessWithNoImage: Array<any> = [];
   stocksList: Array<any> = ['MSFT', 'AAPL', 'GOOG', 'AMZN', 'FB'];
   stocksResults: Array<any>;
-  results = new Map();
+  map = new Map();
 
-  constructor(private dataService: DataService, private stocksService: StocksService, private route:ActivatedRoute) { }
+  constructor(private dataService: DataService, private stocksService: StocksService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.dataService.getBusinessNews(params.get('countryId')).subscribe(businessNews => {
-        this.businessNews = businessNews.articles;
-        this.businessNews.forEach((article: any) => {
+        businessNews.articles.forEach((article: any) => {
           let myRegex = /\s-\s[A-Za-z]/;
           article.title = article.title.split(myRegex)[0];
+          // if (!this.map.has(article.title)) {
+            this.map.set(article.title, true);
+            if (article.source.name == 'Youtube.com') {
+              this.businessVideos.push(article);
+            } else if (article.urlToImage === null || article.urlToImage == '') {
+              this.businessWithNoImage.push(article);
+            }
+            else {
+              this.businessNews.push(article);
+            }
+          // }
         });
       });
     });
