@@ -9,9 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SportsComponent implements OnInit {
 
-  private sportsNews: Array<any> = [];
-  private sportsVideos: Array<any> = [];
-  private sportsWithNoImage: Array<any> = [];
+  public sportsNews: Array<any> = [];
+  public sportsVideos: Array<any> = [];
+  public sportsWithNoImage: Array<any> = [];
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
